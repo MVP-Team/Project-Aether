@@ -46,8 +46,9 @@ namespace Aether_Console.Terminal
                     Console.WriteLine("Application will be opened!");
                     Application(line);
                     break;
-                case "play":
-                    Console.WriteLine("Song will be played!");
+                case "calc":
+                    Console.WriteLine("Mathematic will be done!"); 
+
                     break;
                 default:
                     Console.WriteLine("Please enter a valid command.");
