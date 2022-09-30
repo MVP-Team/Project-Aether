@@ -116,6 +116,7 @@ namespace Aether_Console.Terminal
                 app = validKeys[0].GetValue("DisplayName") as string;
                 return validKeys[0].GetValue("InstallLocation")?.ToString();
             }
+            key =
             return "";
         }
 
@@ -134,15 +135,6 @@ namespace Aether_Console.Terminal
                 }
                 Console.WriteLine($"1:{right}");
             }
-            else if (Directory.GetFiles(directory, $"{exe}.exe", SearchOption.AllDirectories).Length != 0)
-            {
-                string[] directories = Directory.GetFiles(directory, $"{exe}.exe", SearchOption.AllDirectories);
-                foreach (string file in directories)
-                {
-                    right = file;
-                }
-                Console.WriteLine($"2:{right}");
-            }
             else if (Directory.GetFiles(directory, $"*{exe.ToLower()}.exe", SearchOption.AllDirectories).Length != 0)
             {
                 string[] directories = Directory.GetFiles(directory, $"*{exe.ToLower()}.exe", SearchOption.AllDirectories);
@@ -150,7 +142,7 @@ namespace Aether_Console.Terminal
                 {
                     right = file;
                 }
-                Console.WriteLine($"3:{right}");
+                Console.WriteLine($"2:{right}");
             } else if (Directory.GetFiles(directory, "launcher.exe", SearchOption.AllDirectories).Length != 0)
             {
                 string[] directories = Directory.GetFiles(directory, "launcher.exe", SearchOption.AllDirectories);
@@ -158,7 +150,7 @@ namespace Aether_Console.Terminal
                 {
                     right = file;
                 }
-                Console.WriteLine($"4:{right}");
+                Console.WriteLine($"3:{right}");
             } else if (Directory.GetFiles(directory, "Code.exe", SearchOption.AllDirectories).Length != 0)
             {
                 string[] directories = Directory.GetFiles(directory, "Code.exe", SearchOption.AllDirectories);
@@ -166,14 +158,14 @@ namespace Aether_Console.Terminal
                 {
                     right = file;
                 }
-                Console.WriteLine($"5:{right}");
+                Console.WriteLine($"4:{right}");
             } else if (Directory.GetFiles(directory, $"{exe.Replace(" ", "")}.exe", SearchOption.AllDirectories).Length != 0) {
                 string[] directories = Directory.GetFiles(directory, $"{exe.Replace(" ", "")}.exe", SearchOption.AllDirectories);
                 foreach (string file in directories)
                 {
                     right = file;
                 }
-                Console.WriteLine($"6:{right}");
+                Console.WriteLine($"5:{right}");
             }
             return right;
         }   
