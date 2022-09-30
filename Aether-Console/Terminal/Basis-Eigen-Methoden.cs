@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.Win32;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,73 +16,166 @@ namespace Aether_Console.Terminal
         /*Please write your methods here*/
         private static void Application(string app)
         {
-            IDictionary<string, string> humans = new Dictionary<string, string>();
-            humans.Add("Internet-Explorer", "Explorer");
-            humans.Add("Edge", "Microsoft");
-            IDictionary<string, string> apps = new Dictionary<string, string>();
-            apps.Add("Explorer", "iexplore.exe");
-            apps.Add("Firefox", "firefox.exe");
-            apps.Add("Microsoft", "msedge.exe");
-            apps.Add("Origin", "Origin.exe");
-            
-
+            string directory = FindDirectoryByProgramm(ref app);
+            //Console.WriteLine(programmRun(app, directory));
             try
             {
-                Process.Start(programmRun(app, apps[app]));
+                Process.Start(programmRun(app, directory));
             } catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine("Sorry Aether can't find your application! :(");
+                Console.WriteLine("Sorry there is no Application!");
             }
-        } 
+        }
+
 
 
 
 
 
         //This code organizes an application call through an exe path.
-        private static string programmRun(string programm, string exe)
+        private static string FindDirectoryByProgramm(ref string app)
+        {
+            string displayName;
+            RegistryKey key;
+            List<RegistryKey> validKeys = new();
+
+            // search in: CurrentUser
+            key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall");
+            foreach (String keyName in key.GetSubKeyNames())
+            {
+                RegistryKey subkey = key.OpenSubKey(keyName);
+                displayName = subkey.GetValue("DisplayName") as string ?? "";
+                if (displayName.Contains(app))
+                {
+                    validKeys.Add(subkey);
+                    return subkey.GetValue("InstallLocation")?.ToString();
+                }
+            }
+            foreach(RegistryKey kia in validKeys)
+            {
+                if(kia.GetValue("DisplayName") == app)
+                {
+                    app = kia.GetValue("DisplayName") as string;
+                    return kia.GetValue("InstallLocation")?.ToString();
+                }
+            } 
+            if(validKeys.Count > 0)
+            {
+                app = validKeys[0].GetValue("DisplayName") as string;
+                return validKeys[0].GetValue("InstallLocation")?.ToString();
+            }
+
+
+            // search in: LocalMachine_32
+            key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall");
+            foreach (String keyName in key.GetSubKeyNames())
+            {
+                RegistryKey subkey = key.OpenSubKey(keyName);
+                displayName = subkey.GetValue("DisplayName") as string ?? "";
+
+                if (displayName.Contains(app))
+                {
+                    return subkey.GetValue("InstallLocation")?.ToString();
+                }
+            }
+            foreach (RegistryKey kia in validKeys)
+            {
+                if (kia.GetValue("DisplayName") == app)
+                {
+                    app = kia.GetValue("DisplayName") as string;
+                    return kia.GetValue("InstallLocation")?.ToString();
+                }
+            }
+            if (validKeys.Count > 0)
+            {
+                app = validKeys[0].GetValue("DisplayName") as string;
+                return validKeys[0].GetValue("InstallLocation")?.ToString();
+            }
+
+            // search in: LocalMachine_64
+            key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall");
+            foreach (String keyName in key.GetSubKeyNames())
+            {
+                RegistryKey subkey = key.OpenSubKey(keyName);
+                displayName = subkey.GetValue("DisplayName") as string ?? "";
+                if (displayName.Contains(app))
+                {
+                    return subkey.GetValue("InstallLocation")?.ToString();
+                }
+            }
+            foreach (RegistryKey kia in validKeys)
+            {
+                if (kia.GetValue("DisplayName") == app)
+                {
+                    app = kia.GetValue("DisplayName") as string;
+                    return kia.GetValue("InstallLocation")?.ToString();
+                }
+            }
+            if (validKeys.Count > 0)
+            {
+                app = validKeys[0].GetValue("DisplayName") as string;
+                return validKeys[0].GetValue("InstallLocation")?.ToString();
+            }
+            return "";
+        }
+
+
+        private static string programmRun(string app, string directory)
         {
             string right = "";
-
-            DirectoryInfo selDirectory = new DirectoryInfo(@"C:\Program Files (x86)");
-            DirectoryInfo[] dirsInDir = selDirectory.GetDirectories("*" + programm + "*.*");
-
-            string? fsName = null;
-            foreach (DirectoryInfo foundDir in dirsInDir)
+            string exe = app;
+            Console.WriteLine(directory);
+            if (Directory.GetFiles(directory, $"{exe.ToLower()}.exe", SearchOption.AllDirectories).Length != 0)
             {
-                string fullName = foundDir.FullName;
-                fsName = fullName;
-                if (Directory.GetFiles(fullName, exe, SearchOption.AllDirectories) != null)
+                string[] directories = Directory.GetFiles(directory, $"{exe.ToLower()}.exe", SearchOption.AllDirectories);
+                foreach (string file in directories)
                 {
-                    break;
+                    right = file;
                 }
-                
+                Console.WriteLine($"1:{right}");
             }
-       
-            
-            DirectoryInfo secDirectory = new DirectoryInfo(@"C:\Program Files");
-            DirectoryInfo[] dirsSecInDir = secDirectory.GetDirectories("*" + programm + "*.*");
-            string? scName = null;
-            foreach (DirectoryInfo foundDir in dirsSecInDir)
+            else if (Directory.GetFiles(directory, $"{exe}.exe", SearchOption.AllDirectories).Length != 0)
             {
-                string fullName = foundDir.FullName;
-                scName = fullName;
-                if (Directory.GetFiles(fullName, exe, SearchOption.AllDirectories) != null)
+                string[] directories = Directory.GetFiles(directory, $"{exe}.exe", SearchOption.AllDirectories);
+                foreach (string file in directories)
                 {
-                    break;
+                    right = file;
                 }
+                Console.WriteLine($"2:{right}");
             }
-
-            string? name = fsName ?? scName;
-            
-            string[] directories = Directory.GetFiles(name, exe, SearchOption.AllDirectories);
-            foreach (string file in directories)
+            else if (Directory.GetFiles(directory, $"*{exe.ToLower()}.exe", SearchOption.AllDirectories).Length != 0)
             {
-              right = file;
+                string[] directories = Directory.GetFiles(directory, $"*{exe.ToLower()}.exe", SearchOption.AllDirectories);
+                foreach (string file in directories)
+                {
+                    right = file;
+                }
+                Console.WriteLine($"3:{right}");
+            } else if (Directory.GetFiles(directory, "launcher.exe", SearchOption.AllDirectories).Length != 0)
+            {
+                string[] directories = Directory.GetFiles(directory, "launcher.exe", SearchOption.AllDirectories);
+                foreach (string file in directories)
+                {
+                    right = file;
+                }
+                Console.WriteLine($"4:{right}");
+            } else if (Directory.GetFiles(directory, "Code.exe", SearchOption.AllDirectories).Length != 0)
+            {
+                string[] directories = Directory.GetFiles(directory, "Code.exe", SearchOption.AllDirectories);
+                foreach (string file in directories)
+                {
+                    right = file;
+                }
+                Console.WriteLine($"5:{right}");
+            } else if (Directory.GetFiles(directory, $"{exe.Replace(" ", "")}.exe", SearchOption.AllDirectories).Length != 0) {
+                string[] directories = Directory.GetFiles(directory, $"{exe.Replace(" ", "")}.exe", SearchOption.AllDirectories);
+                foreach (string file in directories)
+                {
+                    right = file;
+                }
+                Console.WriteLine($"6:{right}");
             }
-
             return right;
-        }
+        }   
     }
 }

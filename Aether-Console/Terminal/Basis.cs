@@ -38,14 +38,13 @@ namespace Aether_Console.Terminal
             line = line.Substring(line.IndexOf(" ") + 1);
             string snLine = (line.Contains(" ")) ? line.Substring(0, line.IndexOf(" ")) : line;
             line = line.Substring(line.IndexOf(" ") + 1);
-            string lsLine = (line.Contains(" ")) ? line.Substring(0, line.IndexOf(" ")) : line;
 
 
             switch (snLine)
             {
                 case "open":
                     Console.WriteLine("Application will be opened!");
-                    Application(lsLine);
+                    Application(line);
                     break;
                 case "play":
                     Console.WriteLine("Song will be played!");
