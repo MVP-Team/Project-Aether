@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace Aether
+namespace AetherGUI.Views
 {
     public partial class MainWindow : Window
     {

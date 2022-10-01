@@ -116,7 +116,7 @@ namespace Aether_Console.Terminal
                 app = validKeys[0].GetValue("DisplayName") as string;
                 return validKeys[0].GetValue("InstallLocation")?.ToString();
             }
-            key =
+            //key = 
             return "";
         }
 
