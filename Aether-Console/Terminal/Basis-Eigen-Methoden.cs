@@ -13,111 +13,60 @@ namespace Aether_Console.Terminal
 {
     partial class Basis
     {
-        /*Please write your methods here*/
-        private static void Application(string app)
+
+        public static IDictionary<string, string> applications;
+        static Basis()
         {
-            string directory = FindDirectoryByProgramm(ref app);
-            //Console.WriteLine(programmRun(app, directory));
+         applications = Applications.allApplications;
+        }
+        /*Please write your methods here*/
+        public static void Application(string app)
+        {
+            string? directory = null;
             try
             {
-                Process.Start(programmRun(app, directory));
-            } catch (Exception ex)
-            {
-                Console.WriteLine("Sorry there is no Application!");
+              directory = FindDirectoryByName(app);
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            //Console.WriteLine(programmRun(app, directory));
+
+            if (directory != null)
+            {
+                try
+                {
+                    Process.Start(programmRun(app, directory));
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Sorry there is no Application!");
+                }
+            }
+            
         }
 
 
-
-
-
-
-        //This code organizes an application call through an exe path.
-        private static string FindDirectoryByProgramm(ref string app)
+        
+       
+        private static string FindDirectoryByName(string app)
         {
-            string displayName;
-            RegistryKey key;
-            List<RegistryKey> validKeys = new();
-
-            // search in: CurrentUser
-            key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall");
-            foreach (String keyName in key.GetSubKeyNames())
+            if(app.Length < 3)
             {
-                RegistryKey subkey = key.OpenSubKey(keyName);
-                displayName = subkey.GetValue("DisplayName") as string ?? "";
-                if (displayName.Contains(app))
-                {
-                    validKeys.Add(subkey);
-                    return subkey.GetValue("InstallLocation")?.ToString();
-                }
-            }
-            foreach(RegistryKey kia in validKeys)
+                throw new ArgumentException("Sorry there is no Application!");
+            } else if (applications.ContainsKey(app))
             {
-                if(kia.GetValue("DisplayName") == app)
-                {
-                    app = kia.GetValue("DisplayName") as string;
-                    return kia.GetValue("InstallLocation")?.ToString();
-                }
+                return applications[app];
             } 
-            if(validKeys.Count > 0)
+            foreach (string apps in applications.Keys)
             {
-                app = validKeys[0].GetValue("DisplayName") as string;
-                return validKeys[0].GetValue("InstallLocation")?.ToString();
-            }
-
-
-            // search in: LocalMachine_32
-            key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall");
-            foreach (String keyName in key.GetSubKeyNames())
-            {
-                RegistryKey subkey = key.OpenSubKey(keyName);
-                displayName = subkey.GetValue("DisplayName") as string ?? "";
-
-                if (displayName.Contains(app))
+                if (apps.Contains(app))
                 {
-                    return subkey.GetValue("InstallLocation")?.ToString();
+                    return applications[apps];
                 }
             }
-            foreach (RegistryKey kia in validKeys)
-            {
-                if (kia.GetValue("DisplayName") == app)
-                {
-                    app = kia.GetValue("DisplayName") as string;
-                    return kia.GetValue("InstallLocation")?.ToString();
-                }
-            }
-            if (validKeys.Count > 0)
-            {
-                app = validKeys[0].GetValue("DisplayName") as string;
-                return validKeys[0].GetValue("InstallLocation")?.ToString();
-            }
-
-            // search in: LocalMachine_64
-            key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall");
-            foreach (String keyName in key.GetSubKeyNames())
-            {
-                RegistryKey subkey = key.OpenSubKey(keyName);
-                displayName = subkey.GetValue("DisplayName") as string ?? "";
-                if (displayName.Contains(app))
-                {
-                    return subkey.GetValue("InstallLocation")?.ToString();
-                }
-            }
-            foreach (RegistryKey kia in validKeys)
-            {
-                if (kia.GetValue("DisplayName") == app)
-                {
-                    app = kia.GetValue("DisplayName") as string;
-                    return kia.GetValue("InstallLocation")?.ToString();
-                }
-            }
-            if (validKeys.Count > 0)
-            {
-                app = validKeys[0].GetValue("DisplayName") as string;
-                return validKeys[0].GetValue("InstallLocation")?.ToString();
-            }
-            key =
-            return "";
+            throw new ArgumentException("Sorry there is no Application!");
         }
 
 
@@ -143,14 +92,33 @@ namespace Aether_Console.Terminal
                     right = file;
                 }
                 Console.WriteLine($"2:{right}");
-            } else if (Directory.GetFiles(directory, "launcher.exe", SearchOption.AllDirectories).Length != 0)
+            }
+            else if (Directory.GetFiles(directory, $"{exe.ToUpper()}.exe", SearchOption.AllDirectories).Length != 0)
+            {
+                string[] directories = Directory.GetFiles(directory, $"{exe.ToUpper()}.exe", SearchOption.AllDirectories);
+                foreach (string file in directories)
+                {
+                    right = file;
+                }
+                Console.WriteLine($"3:{right}");
+            }
+            else if (Directory.GetFiles(directory, $"*{exe.ToUpper()}.exe", SearchOption.AllDirectories).Length != 0)
+            {
+                string[] directories = Directory.GetFiles(directory, $"*{exe.ToUpper()}.exe", SearchOption.AllDirectories);
+                foreach (string file in directories)
+                {
+                    right = file;
+                }
+                Console.WriteLine($"4:{right}");
+            }
+            else if (Directory.GetFiles(directory, "launcher.exe", SearchOption.AllDirectories).Length != 0)
             {
                 string[] directories = Directory.GetFiles(directory, "launcher.exe", SearchOption.AllDirectories);
                 foreach (string file in directories)
                 {
                     right = file;
                 }
-                Console.WriteLine($"3:{right}");
+                Console.WriteLine($"5:{right}");
             } else if (Directory.GetFiles(directory, "Code.exe", SearchOption.AllDirectories).Length != 0)
             {
                 string[] directories = Directory.GetFiles(directory, "Code.exe", SearchOption.AllDirectories);
@@ -158,14 +126,14 @@ namespace Aether_Console.Terminal
                 {
                     right = file;
                 }
-                Console.WriteLine($"4:{right}");
+                Console.WriteLine($"6:{right}");
             } else if (Directory.GetFiles(directory, $"{exe.Replace(" ", "")}.exe", SearchOption.AllDirectories).Length != 0) {
                 string[] directories = Directory.GetFiles(directory, $"{exe.Replace(" ", "")}.exe", SearchOption.AllDirectories);
                 foreach (string file in directories)
                 {
                     right = file;
                 }
-                Console.WriteLine($"5:{right}");
+                Console.WriteLine($"7:{right}");
             }
             return right;
         }   
