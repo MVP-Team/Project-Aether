@@ -3,24 +3,41 @@
         xmlns:vm="using:AetherGUI.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="500" MinWidth="1080" MinHeight="600" MaxWidth="1080" MaxHeight="600" 
         x:Class="AetherGUI.Views.MainWindow"
-        Icon="/Assets/aet.ico"
+        Icon="/Assets/aet.ico" 
         Title="Aether Main Window">
 	<Window.Styles>
-
+		<Styles>
+			<Style Selector="TextBlock.h1">
+				<Setter Property="FontSize" Value="44"/>
+				<Setter Property="FontWeight" Value="DemiBold"/>
+				<Setter Property="FontStyle" Value="Oblique"/>
+			</Style>
+		</Styles>
 
 
 
 	</Window.Styles>
 
-	<StackPanel>
+	<Panel Background="#313131">
 		<Design.DataContext>
 			<vm:MainWindowViewModel/>
 		</Design.DataContext>
 
-		<TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-	</StackPanel>
+		<StackPanel>
+			<!--Hier wird Menu kommen-->
+			
+		</StackPanel>
+		
+		<StackPanel Height="500">
+
+			<TextBlock Text="{Binding Greeting}" Classes="h1" Foreground="#aaaaff" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+			
+		</StackPanel>
+	</Panel>
+
+	
 
 	
 </Window>
