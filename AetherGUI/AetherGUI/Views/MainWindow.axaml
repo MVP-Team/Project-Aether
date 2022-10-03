@@ -3,8 +3,8 @@
         xmlns:vm="using:AetherGUI.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="500" MinWidth="1080" MinHeight="600" MaxWidth="1080" MaxHeight="600" 
-        x:Class="AetherGUI.Views.MainWindow"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="500" Width="1080" Height="600" 
+        x:Class="AetherGUI.Views.MainWindow" CanResize="False"
         Icon="/Assets/aet.ico" 
         Title="Aether Main Window">
 	<Window.Styles>
@@ -13,6 +13,9 @@
 				<Setter Property="FontSize" Value="44"/>
 				<Setter Property="FontWeight" Value="DemiBold"/>
 				<Setter Property="FontStyle" Value="Oblique"/>
+			</Style>
+			<Style Selector="Expander.MenuExpander">
+				<Setter Property="Opacity" Value="0.3"></Setter>
 			</Style>
 		</Styles>
 
@@ -27,7 +30,7 @@
 
 		<StackPanel>
 			<!--Hier wird Menu kommen-->
-			
+			<Expander ExpandDirection="Right" Height="600" Classes="MenuExpander"></Expander>
 		</StackPanel>
 		
 		<StackPanel Height="500">
