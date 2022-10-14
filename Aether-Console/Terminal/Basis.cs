@@ -6,10 +6,6 @@ using System.Threading.Tasks;
 
 namespace Aether_Console.Terminal
 {
-    public enum Writings
-    {
-        Open = 0
-    }
     partial class Basis
     {
 
@@ -47,8 +43,8 @@ namespace Aether_Console.Terminal
                     Application(line);
                     break;
                 case "calc":
-                    Console.WriteLine("Mathematic will be done!"); 
-
+                    Console.WriteLine("Mathematic will be done!");
+                    
                     break;
                 default:
                     Console.WriteLine("Please enter a valid command.");
