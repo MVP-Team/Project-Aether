@@ -18,42 +18,58 @@ namespace Aether_Console.Terminal
         static Basis()
         {
          applications = Applications.allApplications;
+         Office();
         }
         /*Please write your methods here*/
         public static void Application(string app)
         {
-            string? directory = null;
             try
             {
-              directory = FindDirectoryByName(app);
-            }
-            catch (Exception ex)
+                Process.Start($"{app.ToLower()}.exe");
+            } catch
             {
-                Console.WriteLine(ex.Message);
-            }
-            //Console.WriteLine(programmRun(app, directory));
 
-            if (directory != null)
-            {
-                try
-                {
-                    Process.Start(programmRun(app, directory));
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Sorry there is no Application!");
-                }
+                 string? directory = null;
+                 try
+                 {
+                   directory = FindDirectoryByName(app);
+                 }
+                 catch (Exception ex)
+                 {
+                     Console.WriteLine(ex.Message);
+                 }
+
+                    if (directory != null)
+                    {
+                         try
+                         {
+                             Process.Start(programmRun(app, directory));
+                         }
+                         catch (Exception ex)
+                         {
+                             Console.WriteLine("Sorry there is no Application!");
+                         }
+                    }
             }
             
         }
-
-
+        
+        private static void Office()
+        {
+            applications.Add("Word", "C:\\Program Files\\Microsoft Office\\root\\Office16");
+            applications.Add("Excel", "C:\\Program Files\\Microsoft Office\\root\\Office16");
+            applications.Add("PowerPoint", "C:\\Program Files\\Microsoft Office\\root\\Office16");
+            applications.Add("Access", "C:\\Program Files\\Microsoft Office\\root\\Office16");
+            applications.Add("Publisher", "C:\\Program Files\\Microsoft Office\\root\\Office16");
+            applications.Add("OneNote", "C:\\Program Files\\Microsoft Office\\root\\Office16");
+            applications.Add("Outlook", "C:\\Program Files\\Microsoft Office\\root\\Office16");         
+        }
         
        
         private static string FindDirectoryByName(string app)
         {
-            if(app.Length < 3)
-            {
+            if (app.Length < 3)
+            { 
                 throw new ArgumentException("Sorry there is no Application!");
             } else if (applications.ContainsKey(app))
             {
@@ -93,24 +109,6 @@ namespace Aether_Console.Terminal
                 }
                 Console.WriteLine($"2:{right}");
             }
-            else if (Directory.GetFiles(directory, $"{exe.ToUpper()}.exe", SearchOption.AllDirectories).Length != 0)
-            {
-                string[] directories = Directory.GetFiles(directory, $"{exe.ToUpper()}.exe", SearchOption.AllDirectories);
-                foreach (string file in directories)
-                {
-                    right = file;
-                }
-                Console.WriteLine($"3:{right}");
-            }
-            else if (Directory.GetFiles(directory, $"*{exe.ToUpper()}.exe", SearchOption.AllDirectories).Length != 0)
-            {
-                string[] directories = Directory.GetFiles(directory, $"*{exe.ToUpper()}.exe", SearchOption.AllDirectories);
-                foreach (string file in directories)
-                {
-                    right = file;
-                }
-                Console.WriteLine($"4:{right}");
-            }
             else if (Directory.GetFiles(directory, "launcher.exe", SearchOption.AllDirectories).Length != 0)
             {
                 string[] directories = Directory.GetFiles(directory, "launcher.exe", SearchOption.AllDirectories);
@@ -118,7 +116,7 @@ namespace Aether_Console.Terminal
                 {
                     right = file;
                 }
-                Console.WriteLine($"5:{right}");
+                Console.WriteLine($"3:{right}");
             } else if (Directory.GetFiles(directory, "Code.exe", SearchOption.AllDirectories).Length != 0)
             {
                 string[] directories = Directory.GetFiles(directory, "Code.exe", SearchOption.AllDirectories);
@@ -126,15 +124,43 @@ namespace Aether_Console.Terminal
                 {
                     right = file;
                 }
-                Console.WriteLine($"6:{right}");
+                Console.WriteLine($"4:{right}");
             } else if (Directory.GetFiles(directory, $"{exe.Replace(" ", "")}.exe", SearchOption.AllDirectories).Length != 0) {
                 string[] directories = Directory.GetFiles(directory, $"{exe.Replace(" ", "")}.exe", SearchOption.AllDirectories);
                 foreach (string file in directories)
                 {
                     right = file;
                 }
+                Console.WriteLine($"5:{right}");
+            }
+            else if (Directory.GetFiles(directory, $"{exe.Substring(0, exe.IndexOf(" ") - 2).ToLower()}*.exe", SearchOption.AllDirectories).Length != 0)
+            {
+                string[] directories = Directory.GetFiles(directory, $"{exe.Substring(0, exe.IndexOf(" ") - 2).ToLower()}*.exe", SearchOption.AllDirectories);
+                foreach (string file in directories)
+                {
+                    right = file;
+                }
+                Console.WriteLine($"6:{right}");
+            }
+            else if (Directory.GetFiles(directory, $"*{exe.Substring(exe.IndexOf(" ") + 1, exe.Length - exe.IndexOf(" ") - 2).ToLower()}*.exe", SearchOption.AllDirectories).Length != 0)
+            {
+                string[] directories = Directory.GetFiles(directory, $"*{exe.Substring(exe.IndexOf(" ") + 1, exe.Length - exe.IndexOf(" ") - 2).ToLower()}*.exe", SearchOption.AllDirectories);
+                foreach (string file in directories)
+                {
+                    right = file;
+                }
                 Console.WriteLine($"7:{right}");
             }
+            else if (Directory.GetFiles(directory, $"{exe.Substring(0, 6).ToUpper()}*.exe", SearchOption.AllDirectories).Length != 0)
+            {
+                string[] directories = Directory.GetFiles(directory, $"{exe.Substring(0, 6).ToUpper()}*.exe", SearchOption.AllDirectories);
+                foreach (string file in directories)
+                {
+                    right = file;
+                }
+                Console.WriteLine($"8:{right}");
+            }
+            
             return right;
         }   
     }
