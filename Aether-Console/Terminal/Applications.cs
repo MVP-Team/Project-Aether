@@ -12,7 +12,7 @@ namespace Aether_Console.Terminal
     public class Applications
     {
         public static IDictionary<string, string> allApplications = new Dictionary<string, string>();
-       
+
         static Applications()
         {
             FindDirectoryWithProgramm();
@@ -108,3 +108,4 @@ namespace Aether_Console.Terminal
         }
     }
 }
+
