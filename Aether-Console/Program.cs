@@ -3,7 +3,5 @@ using Aether_Console.Terminal;
 using Microsoft.Win32;
 using System.Diagnostics;
 using System.Xml.Linq;
-
-Basis.Lines();
-
-
+Basis bas = new Basis();
+bas.Lines();
