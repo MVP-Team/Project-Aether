@@ -13,3 +13,14 @@ C:\HTL\3BHIF\Aether\Project-Aether\Aether-Console\obj\Debug\net6.0\refint\Aether
 C:\HTL\3BHIF\Aether\Project-Aether\Aether-Console\obj\Debug\net6.0\Aether-Console.pdb
 C:\HTL\3BHIF\Aether\Project-Aether\Aether-Console\obj\Debug\net6.0\Aether-Console.genruntimeconfig.cache
 C:\HTL\3BHIF\Aether\Project-Aether\Aether-Console\obj\Debug\net6.0\ref\Aether-Console.dll
+C:\HTL\3BHIF\Aether\Project-Aether\Aether-Console\obj\Debug\net6.0\Aether-Console.csproj.SuggestedBindingRedirects.cache
+C:\HTL\3BHIF\Aether\Project-Aether\Aether-Console\obj\Debug\net6.0\Aether-Console.dll.config
+C:\HTL\3BHIF\Aether\Project-Aether\Aether-Console\bin\Debug\net6.0\Aether-Console.dll.config
+C:\HTL\3BHIF\Aether\Project-Aether\Aether-Console\bin\Debug\net6.0\Microsoft.Threading.Tasks.Extensions.Desktop.dll
+C:\HTL\3BHIF\Aether\Project-Aether\Aether-Console\bin\Debug\net6.0\Microsoft.Threading.Tasks.Extensions.dll
+C:\HTL\3BHIF\Aether\Project-Aether\Aether-Console\bin\Debug\net6.0\Microsoft.Threading.Tasks.dll
+C:\HTL\3BHIF\Aether\Project-Aether\Aether-Console\bin\Debug\net6.0\System.Net.Http.Extensions.dll
+C:\HTL\3BHIF\Aether\Project-Aether\Aether-Console\bin\Debug\net6.0\System.Net.Http.Primitives.dll
+C:\HTL\3BHIF\Aether\Project-Aether\Aether-Console\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\HTL\3BHIF\Aether\Project-Aether\Aether-Console\bin\Debug\net6.0\unirest-net.dll
+C:\HTL\3BHIF\Aether\Project-Aether\Aether-Console\obj\Debug\net6.0\Aether-Console.csproj.CopyComplete

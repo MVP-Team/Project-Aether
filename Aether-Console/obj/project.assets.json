@@ -1,11 +1,381 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {}
+    "net6.0": {
+      "Microsoft.Bcl/1.1.10": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Bcl.Build": "1.0.14"
+        },
+        "compile": {
+          "lib/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "Microsoft.Bcl.Async/1.0.168": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Bcl": "1.1.8"
+        },
+        "compile": {
+          "lib/net40/Microsoft.Threading.Tasks.Extensions.Desktop.dll": {
+            "related": ".xml"
+          },
+          "lib/net40/Microsoft.Threading.Tasks.Extensions.dll": {
+            "related": ".Desktop.xml;.xml"
+          },
+          "lib/net40/Microsoft.Threading.Tasks.dll": {
+            "related": ".Extensions.Desktop.xml;.Extensions.xml;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net40/Microsoft.Threading.Tasks.Extensions.Desktop.dll": {
+            "related": ".xml"
+          },
+          "lib/net40/Microsoft.Threading.Tasks.Extensions.dll": {
+            "related": ".Desktop.xml;.xml"
+          },
+          "lib/net40/Microsoft.Threading.Tasks.dll": {
+            "related": ".Extensions.Desktop.xml;.Extensions.xml;.xml"
+          }
+        }
+      },
+      "Microsoft.Bcl.Build/1.0.21": {
+        "type": "package",
+        "build": {
+          "build/Microsoft.Bcl.Build.targets": {}
+        }
+      },
+      "Microsoft.Net.Http/2.2.29": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Bcl": "1.1.10",
+          "Microsoft.Bcl.Build": "1.0.14"
+        },
+        "compile": {
+          "lib/net45/System.Net.Http.Extensions.dll": {
+            "related": ".XML"
+          },
+          "lib/net45/System.Net.Http.Primitives.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/System.Net.Http.Extensions.dll": {
+            "related": ".XML"
+          },
+          "lib/net45/System.Net.Http.Primitives.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Newtonsoft.Json/7.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Unirest-API/1.0.7.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Bcl": "1.1.10",
+          "Microsoft.Bcl.Async": "1.0.168",
+          "Microsoft.Bcl.Build": "1.0.21",
+          "Microsoft.Net.Http": "2.2.29",
+          "Newtonsoft.Json": "7.0.1"
+        },
+        "compile": {
+          "lib/unirest-net.dll": {}
+        },
+        "runtime": {
+          "lib/unirest-net.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Microsoft.Bcl/1.1.10": {
+      "sha512": "+tTqoh/M1pyL8El3qLy30EcwnAtyvFoDZJtdG9Cbg/WdFbh4N8kyrq198XHuEL7lnJbeD0DRO8jcX5IIOh05cQ==",
+      "type": "package",
+      "path": "microsoft.bcl/1.1.10",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "License-Stable.rtf",
+        "lib/Xamarin.iOS10/_._",
+        "lib/monoandroid/_._",
+        "lib/monotouch/_._",
+        "lib/net40/System.IO.dll",
+        "lib/net40/System.IO.xml",
+        "lib/net40/System.Runtime.dll",
+        "lib/net40/System.Runtime.xml",
+        "lib/net40/System.Threading.Tasks.dll",
+        "lib/net40/System.Threading.Tasks.xml",
+        "lib/net40/ensureRedirect.xml",
+        "lib/net45/_._",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.IO.dll",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.IO.xml",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Runtime.dll",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Runtime.xml",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Threading.Tasks.dll",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Threading.Tasks.xml",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/ensureRedirect.xml",
+        "lib/portable-net40+sl4+win8+wp8+wpa81/System.IO.dll",
+        "lib/portable-net40+sl4+win8+wp8+wpa81/System.IO.xml",
+        "lib/portable-net40+sl4+win8+wp8+wpa81/System.Runtime.dll",
+        "lib/portable-net40+sl4+win8+wp8+wpa81/System.Runtime.xml",
+        "lib/portable-net40+sl4+win8+wp8+wpa81/System.Threading.Tasks.dll",
+        "lib/portable-net40+sl4+win8+wp8+wpa81/System.Threading.Tasks.xml",
+        "lib/portable-net40+sl4+win8+wp8+wpa81/ensureRedirect.xml",
+        "lib/portable-net40+sl4+win8/System.IO.dll",
+        "lib/portable-net40+sl4+win8/System.IO.xml",
+        "lib/portable-net40+sl4+win8/System.Runtime.dll",
+        "lib/portable-net40+sl4+win8/System.Runtime.xml",
+        "lib/portable-net40+sl4+win8/System.Threading.Tasks.dll",
+        "lib/portable-net40+sl4+win8/System.Threading.Tasks.xml",
+        "lib/portable-net40+sl4+win8/ensureRedirect.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/System.IO.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/System.IO.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/System.Runtime.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/System.Runtime.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/System.Threading.Tasks.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/System.Threading.Tasks.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/ensureRedirect.xml",
+        "lib/portable-net40+win8+wp8+wpa81/System.IO.dll",
+        "lib/portable-net40+win8+wp8+wpa81/System.IO.xml",
+        "lib/portable-net40+win8+wp8+wpa81/System.Runtime.dll",
+        "lib/portable-net40+win8+wp8+wpa81/System.Runtime.xml",
+        "lib/portable-net40+win8+wp8+wpa81/System.Threading.Tasks.dll",
+        "lib/portable-net40+win8+wp8+wpa81/System.Threading.Tasks.xml",
+        "lib/portable-net40+win8+wp8+wpa81/ensureRedirect.xml",
+        "lib/portable-net40+win8/System.IO.dll",
+        "lib/portable-net40+win8/System.IO.xml",
+        "lib/portable-net40+win8/System.Runtime.dll",
+        "lib/portable-net40+win8/System.Runtime.xml",
+        "lib/portable-net40+win8/System.Threading.Tasks.dll",
+        "lib/portable-net40+win8/System.Threading.Tasks.xml",
+        "lib/portable-net40+win8/ensureRedirect.xml",
+        "lib/portable-net45+win8+wp8+wpa81/_._",
+        "lib/portable-net45+win8+wpa81/_._",
+        "lib/portable-net451+win81+wpa81/_._",
+        "lib/portable-net451+win81/_._",
+        "lib/portable-win81+wp81+wpa81/_._",
+        "lib/sl4-windowsphone71/System.IO.dll",
+        "lib/sl4-windowsphone71/System.IO.xml",
+        "lib/sl4-windowsphone71/System.Runtime.dll",
+        "lib/sl4-windowsphone71/System.Runtime.xml",
+        "lib/sl4-windowsphone71/System.Threading.Tasks.dll",
+        "lib/sl4-windowsphone71/System.Threading.Tasks.xml",
+        "lib/sl4-windowsphone71/ensureRedirect.xml",
+        "lib/sl4/System.IO.dll",
+        "lib/sl4/System.IO.xml",
+        "lib/sl4/System.Runtime.dll",
+        "lib/sl4/System.Runtime.xml",
+        "lib/sl4/System.Threading.Tasks.dll",
+        "lib/sl4/System.Threading.Tasks.xml",
+        "lib/sl5/System.IO.dll",
+        "lib/sl5/System.IO.xml",
+        "lib/sl5/System.Runtime.dll",
+        "lib/sl5/System.Runtime.xml",
+        "lib/sl5/System.Threading.Tasks.dll",
+        "lib/sl5/System.Threading.Tasks.xml",
+        "lib/win8/_._",
+        "lib/wp8/_._",
+        "lib/wpa81/_._",
+        "microsoft.bcl.1.1.10.nupkg.sha512",
+        "microsoft.bcl.nuspec"
+      ]
+    },
+    "Microsoft.Bcl.Async/1.0.168": {
+      "sha512": "tUNC02eBwDKpGre0BcNIvblLv1q0Q3DnS/vtkRHj2FE1sXwt386HAudztyl5C0U88hllrqHDvtlz8bK0Y8cHDA==",
+      "type": "package",
+      "path": "microsoft.bcl.async/1.0.168",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "License-Stable.rtf",
+        "lib/net40/Microsoft.Threading.Tasks.Extensions.Desktop.dll",
+        "lib/net40/Microsoft.Threading.Tasks.Extensions.Desktop.xml",
+        "lib/net40/Microsoft.Threading.Tasks.Extensions.dll",
+        "lib/net40/Microsoft.Threading.Tasks.Extensions.xml",
+        "lib/net40/Microsoft.Threading.Tasks.dll",
+        "lib/net40/Microsoft.Threading.Tasks.xml",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/Microsoft.Threading.Tasks.Extensions.dll",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/Microsoft.Threading.Tasks.Extensions.xml",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/Microsoft.Threading.Tasks.dll",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/Microsoft.Threading.Tasks.xml",
+        "lib/portable-net45+win8+wp8+wpa81/Microsoft.Threading.Tasks.Extensions.dll",
+        "lib/portable-net45+win8+wp8+wpa81/Microsoft.Threading.Tasks.Extensions.xml",
+        "lib/portable-net45+win8+wp8+wpa81/Microsoft.Threading.Tasks.dll",
+        "lib/portable-net45+win8+wp8+wpa81/Microsoft.Threading.Tasks.xml",
+        "lib/portable-net45+win8+wpa81/Microsoft.Threading.Tasks.Extensions.dll",
+        "lib/portable-net45+win8+wpa81/Microsoft.Threading.Tasks.Extensions.xml",
+        "lib/portable-net45+win8+wpa81/Microsoft.Threading.Tasks.dll",
+        "lib/portable-net45+win8+wpa81/Microsoft.Threading.Tasks.xml",
+        "lib/sl4-windowsphone71/Microsoft.Threading.Tasks.Extensions.Phone.dll",
+        "lib/sl4-windowsphone71/Microsoft.Threading.Tasks.Extensions.Phone.xml",
+        "lib/sl4-windowsphone71/Microsoft.Threading.Tasks.Extensions.dll",
+        "lib/sl4-windowsphone71/Microsoft.Threading.Tasks.Extensions.xml",
+        "lib/sl4-windowsphone71/Microsoft.Threading.Tasks.dll",
+        "lib/sl4-windowsphone71/Microsoft.Threading.Tasks.xml",
+        "lib/sl4/Microsoft.Threading.Tasks.Extensions.Silverlight.dll",
+        "lib/sl4/Microsoft.Threading.Tasks.Extensions.Silverlight.xml",
+        "lib/sl4/Microsoft.Threading.Tasks.Extensions.dll",
+        "lib/sl4/Microsoft.Threading.Tasks.Extensions.xml",
+        "lib/sl4/Microsoft.Threading.Tasks.dll",
+        "lib/sl4/Microsoft.Threading.Tasks.xml",
+        "lib/win8/Microsoft.Threading.Tasks.Extensions.dll",
+        "lib/win8/Microsoft.Threading.Tasks.Extensions.xml",
+        "lib/win8/Microsoft.Threading.Tasks.dll",
+        "lib/win8/Microsoft.Threading.Tasks.xml",
+        "lib/wp8/Microsoft.Threading.Tasks.Extensions.Phone.dll",
+        "lib/wp8/Microsoft.Threading.Tasks.Extensions.Phone.xml",
+        "lib/wp8/Microsoft.Threading.Tasks.Extensions.dll",
+        "lib/wp8/Microsoft.Threading.Tasks.Extensions.xml",
+        "lib/wp8/Microsoft.Threading.Tasks.dll",
+        "lib/wp8/Microsoft.Threading.Tasks.xml",
+        "lib/wpa81/Microsoft.Threading.Tasks.Extensions.dll",
+        "lib/wpa81/Microsoft.Threading.Tasks.Extensions.xml",
+        "lib/wpa81/Microsoft.Threading.Tasks.dll",
+        "lib/wpa81/Microsoft.Threading.Tasks.xml",
+        "microsoft.bcl.async.1.0.168.nupkg.sha512",
+        "microsoft.bcl.async.nuspec"
+      ]
+    },
+    "Microsoft.Bcl.Build/1.0.21": {
+      "sha512": "sgHu4mIt0+NVGyI12Bj4hLPypNK55UOH+ologj2LqDCjxq3EbIxe/uAtHjY+fEwbE1dtsAHG8SXHf+V/EYbKTg==",
+      "type": "package",
+      "path": "microsoft.bcl.build/1.0.21",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "License-Stable.rtf",
+        "build/Microsoft.Bcl.Build.Tasks.dll",
+        "build/Microsoft.Bcl.Build.targets",
+        "microsoft.bcl.build.1.0.21.nupkg.sha512",
+        "microsoft.bcl.build.nuspec"
+      ]
+    },
+    "Microsoft.Net.Http/2.2.29": {
+      "sha512": "fc4CPEewJ30Xgal+fSq1lYIBt582A7eKlAL7O4HXiYAiTp2VTnA4osSvk7T2n8aS4xTCPVJusQk3yKLT0XSpkg==",
+      "type": "package",
+      "path": "microsoft.net.http/2.2.29",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "License-Stable.rtf",
+        "lib/Xamarin.iOS10/System.Net.Http.Extensions.XML",
+        "lib/Xamarin.iOS10/System.Net.Http.Extensions.dll",
+        "lib/Xamarin.iOS10/System.Net.Http.Primitives.dll",
+        "lib/Xamarin.iOS10/System.Net.Http.Primitives.xml",
+        "lib/monoandroid/System.Net.Http.Extensions.XML",
+        "lib/monoandroid/System.Net.Http.Extensions.dll",
+        "lib/monoandroid/System.Net.Http.Primitives.dll",
+        "lib/monoandroid/System.Net.Http.Primitives.xml",
+        "lib/monotouch/System.Net.Http.Extensions.XML",
+        "lib/monotouch/System.Net.Http.Extensions.dll",
+        "lib/monotouch/System.Net.Http.Primitives.dll",
+        "lib/monotouch/System.Net.Http.Primitives.xml",
+        "lib/net40/System.Net.Http.Extensions.XML",
+        "lib/net40/System.Net.Http.Extensions.dll",
+        "lib/net40/System.Net.Http.Primitives.dll",
+        "lib/net40/System.Net.Http.Primitives.xml",
+        "lib/net40/System.Net.Http.WebRequest.dll",
+        "lib/net40/System.Net.Http.WebRequest.xml",
+        "lib/net40/System.Net.Http.dll",
+        "lib/net40/System.Net.Http.xml",
+        "lib/net40/ensureRedirect.xml",
+        "lib/net45/System.Net.Http.Extensions.XML",
+        "lib/net45/System.Net.Http.Extensions.dll",
+        "lib/net45/System.Net.Http.Primitives.dll",
+        "lib/net45/System.Net.Http.Primitives.xml",
+        "lib/net45/ensureRedirect.xml",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Net.Http.Extensions.XML",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Net.Http.Extensions.dll",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Net.Http.Primitives.XML",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Net.Http.Primitives.dll",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Net.Http.dll",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Net.Http.xml",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/ensureRedirect.xml",
+        "lib/portable-net45+win8+wpa81/System.Net.Http.Extensions.XML",
+        "lib/portable-net45+win8+wpa81/System.Net.Http.Extensions.dll",
+        "lib/portable-net45+win8+wpa81/System.Net.Http.Primitives.dll",
+        "lib/portable-net45+win8+wpa81/System.Net.Http.Primitives.xml",
+        "lib/portable-net45+win8+wpa81/ensureRedirect.xml",
+        "lib/portable-net45+win8/System.Net.Http.Extensions.XML",
+        "lib/portable-net45+win8/System.Net.Http.Extensions.dll",
+        "lib/portable-net45+win8/System.Net.Http.Primitives.dll",
+        "lib/portable-net45+win8/System.Net.Http.Primitives.xml",
+        "lib/portable-net45+win8/ensureRedirect.xml",
+        "lib/sl4-windowsphone71/System.Net.Http.Extensions.XML",
+        "lib/sl4-windowsphone71/System.Net.Http.Extensions.dll",
+        "lib/sl4-windowsphone71/System.Net.Http.Primitives.XML",
+        "lib/sl4-windowsphone71/System.Net.Http.Primitives.dll",
+        "lib/sl4-windowsphone71/System.Net.Http.dll",
+        "lib/sl4-windowsphone71/System.Net.Http.xml",
+        "lib/win8/System.Net.Http.Extensions.XML",
+        "lib/win8/System.Net.Http.Extensions.dll",
+        "lib/win8/System.Net.Http.Primitives.dll",
+        "lib/win8/System.Net.Http.Primitives.xml",
+        "lib/wpa81/System.Net.Http.Extensions.XML",
+        "lib/wpa81/System.Net.Http.Extensions.dll",
+        "lib/wpa81/System.Net.Http.Primitives.dll",
+        "lib/wpa81/System.Net.Http.Primitives.xml",
+        "microsoft.net.http.2.2.29.nupkg.sha512",
+        "microsoft.net.http.nuspec"
+      ]
+    },
+    "Newtonsoft.Json/7.0.1": {
+      "sha512": "q3V4KLetMLnt1gpAVWgtXnHjKs0UG/RalBc29u2ZKxd5t5Ze4JBL5WiiYIklJyK/5CRiIiNwigVQUo0FgbsuWA==",
+      "type": "package",
+      "path": "newtonsoft.json/7.0.1",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll",
+        "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.xml",
+        "newtonsoft.json.7.0.1.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "tools/install.ps1"
+      ]
+    },
+    "Unirest-API/1.0.7.6": {
+      "sha512": "EAAKNIZkn3iaHftS0a9AisyaciklzcGqQKqiKaRUuhiMATPGh/IgCL9UVxeDUAEYejL2iBPt+xfZdztNaz6C/g==",
+      "type": "package",
+      "path": "unirest-api/1.0.7.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/unirest-net.dll",
+        "unirest-api.1.0.7.6.nupkg.sha512",
+        "unirest-api.nuspec"
+      ]
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0": []
+    "net6.0": [
+      "Unirest-API >= 1.0.7.6"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Alex\\.nuget\\packages\\": {},
@@ -50,6 +420,12 @@
     "frameworks": {
       "net6.0": {
         "targetAlias": "net6.0",
+        "dependencies": {
+          "Unirest-API": {
+            "target": "Package",
+            "version": "[1.0.7.6, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
@@ -69,5 +445,57 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.Bcl 1.1.10' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.Bcl",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.Bcl.Async 1.0.168' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.Bcl.Async",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.Net.Http 2.2.29' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.Net.Http",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Newtonsoft.Json 7.0.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Newtonsoft.Json",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Unirest-API 1.0.7.6' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Unirest-API",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

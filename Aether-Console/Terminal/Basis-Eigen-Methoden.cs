@@ -6,7 +6,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Reflection.Metadata.Ecma335;
+using System.Runtime.InteropServices;
 using static System.Net.WebRequestMethods;
 
 namespace Aether_Console.Terminal
@@ -21,6 +23,37 @@ namespace Aether_Console.Terminal
          Office();
         }
         /*Please write your methods here*/
+
+        public static void Search(string term)
+        {
+            string search = $"https://www.google.com/search?q={term}";
+                
+            try
+            {
+                Process.Start(search);
+            }
+            catch
+            {
+                // hack because of this: https://github.com/dotnet/corefx/issues/10361
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    search = search.Replace("&", "^&");
+                    Process.Start(new ProcessStartInfo(search) { UseShellExecute = true });
+                }
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                {
+                    Process.Start("xdg-open", search);
+                }
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                {
+                    Process.Start("open", search);
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }
         public static void Application(string app)
         {
             try
@@ -47,7 +80,7 @@ namespace Aether_Console.Terminal
                          }
                          catch (Exception ex)
                          {
-                             Console.WriteLine("Sorry there is no Application!");
+                             Console.WriteLine("Sorry there is no such Application!");
                          }
                     }
             }
@@ -133,6 +166,15 @@ namespace Aether_Console.Terminal
                 }
                 Console.WriteLine($"5:{right}");
             }
+            else if (Directory.GetFiles(directory, $"{exe.Substring(0, 6).ToUpper()}*.exe", SearchOption.AllDirectories).Length != 0)
+            {
+                string[] directories = Directory.GetFiles(directory, $"{exe.Substring(0, 6).ToUpper()}*.exe", SearchOption.AllDirectories);
+                foreach (string file in directories)
+                {
+                    right = file;
+                }
+                Console.WriteLine($"6:{right}");
+            }
             else if (Directory.GetFiles(directory, $"{exe.Substring(0, exe.IndexOf(" ") - 2).ToLower()}*.exe", SearchOption.AllDirectories).Length != 0)
             {
                 string[] directories = Directory.GetFiles(directory, $"{exe.Substring(0, exe.IndexOf(" ") - 2).ToLower()}*.exe", SearchOption.AllDirectories);
@@ -140,20 +182,11 @@ namespace Aether_Console.Terminal
                 {
                     right = file;
                 }
-                Console.WriteLine($"6:{right}");
+                Console.WriteLine($"7:{right}");
             }
             else if (Directory.GetFiles(directory, $"*{exe.Substring(exe.IndexOf(" ") + 1, exe.Length - exe.IndexOf(" ") - 2).ToLower()}*.exe", SearchOption.AllDirectories).Length != 0)
             {
                 string[] directories = Directory.GetFiles(directory, $"*{exe.Substring(exe.IndexOf(" ") + 1, exe.Length - exe.IndexOf(" ") - 2).ToLower()}*.exe", SearchOption.AllDirectories);
-                foreach (string file in directories)
-                {
-                    right = file;
-                }
-                Console.WriteLine($"7:{right}");
-            }
-            else if (Directory.GetFiles(directory, $"{exe.Substring(0, 6).ToUpper()}*.exe", SearchOption.AllDirectories).Length != 0)
-            {
-                string[] directories = Directory.GetFiles(directory, $"{exe.Substring(0, 6).ToUpper()}*.exe", SearchOption.AllDirectories);
                 foreach (string file in directories)
                 {
                     right = file;
