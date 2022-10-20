@@ -13,4 +13,7 @@
     <SourceRoot Include="C:\Users\Alex\.nuget\packages\" />
     <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
   </ItemGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgAWSSDK_Core Condition=" '$(PkgAWSSDK_Core)' == '' ">C:\Users\Alex\.nuget\packages\awssdk.core\3.7.13.22</PkgAWSSDK_Core>
+  </PropertyGroup>
 </Project>
