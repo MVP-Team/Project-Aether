@@ -28,3 +28,11 @@ C:\HTL\3BHIF\Aether_new\Project-Aether\Aether-Console\obj\Debug\net6.0\Aether-Co
 C:\HTL\3BHIF\Aether_new\Project-Aether\Aether-Console\obj\Debug\net6.0\Aether-Console.pdb
 C:\HTL\3BHIF\Aether_new\Project-Aether\Aether-Console\obj\Debug\net6.0\Aether-Console.genruntimeconfig.cache
 C:\HTL\3BHIF\Aether_new\Project-Aether\Aether-Console\obj\Debug\net6.0\ref\Aether-Console.dll
+C:\HTL\3BHIF\Aether_new\Project-Aether\Aether-Console\bin\Debug\net6.0\LibreTranslate.Net.dll
+C:\HTL\3BHIF\Aether_new\Project-Aether\Aether-Console\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\HTL\3BHIF\Aether_new\Project-Aether\Aether-Console\obj\Debug\net6.0\Aether-Console.csproj.CopyComplete
+C:\HTL\3BHIF\Aether_new\Project-Aether\Aether-Console\bin\Debug\net6.0\AWSSDK.Core.dll
+C:\HTL\3BHIF\Aether_new\Project-Aether\Aether-Console\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\HTL\3BHIF\Aether_new\Project-Aether\Aether-Console\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\HTL\3BHIF\Aether_new\Project-Aether\Aether-Console\bin\Debug\net6.0\Microsoft.Extensions.PlatformAbstractions.dll
+C:\HTL\3BHIF\Aether_new\Project-Aether\Aether-Console\bin\Debug\net6.0\Nancy.dll

@@ -8,13 +8,20 @@ using System.Net;
 using System.Net.Http.Headers;
 using static System.Net.Mime.MediaTypeNames;
 using System.Collections.Immutable;
+using LibreTranslate.Net;
+using System.Collections;
+using Newtonsoft.Json;
+using System.Net.Mime;
+using Aether_Console.Classes_JSON;
+using Nancy.Json;
+using static System.Net.WebRequestMethods;
 
 namespace Aether_Console.Terminal
 {
     partial class Basis
     {
         public static readonly List<string> COMMANDS = new() { "open", "search" };
-        private string translatedWord;
+        private static List<string> translations = new List<string>();
         public void Lines()
         {
             string? beginning = Console.ReadLine();
@@ -48,9 +55,18 @@ namespace Aether_Console.Terminal
                 try
                 {
                     Translate(snLine);
-                    Thread.Sleep(1300);
+                    Thread.Sleep(1600);
                     line = line.Substring(line.IndexOf(" ") + 1);
-                    snLine = translatedWord.ToLower() ?? "None";
+                    foreach (string s in translations)
+                    {
+                        if (COMMANDS.Contains(s.ToLower()))
+                        {
+                            Console.WriteLine(s);
+                            snLine = s.ToLower();
+                            break;
+                        }
+                    }
+                    
                 }
                 catch (Exception ex)
                 {
@@ -67,7 +83,6 @@ namespace Aether_Console.Terminal
                 case "search":
                     Console.WriteLine("Search will be opened!");
                     Search(line);
-
                     break;
                 default:
                     Console.WriteLine("Please enter a valid command.");
@@ -77,41 +92,40 @@ namespace Aether_Console.Terminal
             return true;
         }
 
+
         private async void Translate(string word)
         {
-            if (word.Length <= 10)
+            string url = "https://lingva.ml/api/v1/auto/en/" + word;
+            HttpClient client = new HttpClient();
+            var request = new HttpRequestMessage
             {
-                var client = new HttpClient();
-                var request = new HttpRequestMessage
+                Method = HttpMethod.Get,
+                RequestUri = new Uri(url),
+                Content = new StringContent("", Encoding.UTF8, "application/json"),
+            };
+
+            var body = "";
+            List<String> endlist;
+            using (var response = await client.SendAsync(request))
+            {
+                response.EnsureSuccessStatusCode();
+                body = await response.Content.ReadAsStringAsync();
+                var js = new JavaScriptSerializer();
+                Root translateObject = js.Deserialize<Root>(body);
+                string translation = translateObject.translation;
+                endlist = new List<String>();
+                endlist.Add(translation);
+                if (translateObject.info.extraTranslations.Count() != 0)
                 {
-                    Method = HttpMethod.Post,
-                    RequestUri = new Uri("https://microsoft-translator-text.p.rapidapi.com/translate?api-version=3.0&to%5B0%5D=en&textType=plain&profanityAction=NoAction"),
-                    Headers =
-    {
-        { "X-RapidAPI-Key", "7d51783242msh13bdc185ab92a2cp19a885jsn01e62db23b9f" },
-        { "X-RapidAPI-Host", "microsoft-translator-text.p.rapidapi.com" },
-    },
-                    Content = new StringContent("[\r\n    {\r\n        \"Text\": \"" + word + "\"\r\n    }\r\n]")
-                    {
-                        Headers =
-        {
-            ContentType = new MediaTypeHeaderValue("application/json")
-        }
-                    }
-                };
-                var body = "";
-                using (var response = await client.SendAsync(request))
+                    var list = translateObject.info.extraTranslations[0].list;
+                foreach (var item in list)
                 {
-                    response.EnsureSuccessStatusCode();
-                    body = await response.Content.ReadAsStringAsync();
-                    body = body.Substring(body.IndexOf("text\":\"") + 7, body.IndexOf(",\"to\"") - 8 - body.IndexOf("text\":\""));
-                    translatedWord = body;
+                    endlist.Add(item.word);
+                }
+
                 }
             }
-            else
-            {
-                throw new ArgumentException("Length is not ok");
-            }
+            translations = endlist;
         }
     }
 }
