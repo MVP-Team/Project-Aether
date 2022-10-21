@@ -1,9 +1,11 @@
 ﻿
+using LibreTranslate.Net;
 using Microsoft.Win32;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.Tracing;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -17,6 +19,7 @@ namespace Aether_Console.Terminal
     {
 
         public static IDictionary<string, string> applications;
+        public static readonly List<char> KEYWORDS = new List<char>(){ '.', '!', '?' };
         static Basis()
         {
             applications = Applications.allApplications;
@@ -120,7 +123,40 @@ namespace Aether_Console.Terminal
             throw new ArgumentException("Sorry there is no Application!");
         }
 
-
+        private static async void translator(string text)
+        {
+            if (text.Length <= 100) {
+                string translation = "";
+                int? counter = 0;
+                while (counter != null) {
+                    counter = int.MaxValue;
+                    foreach (char c in KEYWORDS)
+                    {
+                        if (text.Contains(c))
+                        {
+                            if (text.IndexOf(c) < counter)
+                            {
+                                counter = text.IndexOf(c);
+                            }
+                        }
+                    }
+                    if (counter != int.MaxValue)
+                    {
+                        string sentence = text.Substring(0, (int)(counter + 1));
+                        string lastCH = text.Substring((int)(counter), 1);
+                        sentence = sentence.Replace(" ", "&");
+                        translation += $"{await Translate(sentence)}" + lastCH;
+                        text = text.Substring((int)(counter + 1));
+                    } else {
+                        counter = null;
+                    }
+                }
+                Console.WriteLine(translation.Replace("&", " "));
+            } else
+            {
+                Console.WriteLine("Please enter a text less long than 100 words!");
+            }
+        } 
         private static string programmRun(string app, string directory)
         {
             string right = "";

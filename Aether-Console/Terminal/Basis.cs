@@ -20,7 +20,7 @@ namespace Aether_Console.Terminal
 {
     partial class Basis
     {
-        public static readonly List<string> COMMANDS = new() { "open", "search" };
+        public static readonly List<string> COMMANDS = new() { "open", "search", "translate" };
         private static List<string> translations = new List<string>();
         public void Lines()
         {
@@ -60,8 +60,7 @@ namespace Aether_Console.Terminal
                     foreach (string s in translations)
                     {
                         if (COMMANDS.Contains(s.ToLower()))
-                        {
-                            Console.WriteLine(s);
+                        {                       
                             snLine = s.ToLower();
                             break;
                         }
@@ -84,6 +83,10 @@ namespace Aether_Console.Terminal
                     Console.WriteLine("Search will be opened!");
                     Search(line);
                     break;
+                case "translate":
+                    Console.WriteLine("Your translated sentence!");
+                    translator(line);
+                    break;
                 default:
                     Console.WriteLine("Please enter a valid command.");
                     break;
@@ -93,7 +96,7 @@ namespace Aether_Console.Terminal
         }
 
 
-        private async void Translate(string word)
+        private async static Task<string> Translate(string word)
         {
             string url = "https://lingva.ml/api/v1/auto/en/" + word;
             HttpClient client = new HttpClient();
@@ -106,13 +109,14 @@ namespace Aether_Console.Terminal
 
             var body = "";
             List<String> endlist;
+            string translation;
             using (var response = await client.SendAsync(request))
             {
                 response.EnsureSuccessStatusCode();
                 body = await response.Content.ReadAsStringAsync();
                 var js = new JavaScriptSerializer();
                 Root translateObject = js.Deserialize<Root>(body);
-                string translation = translateObject.translation;
+                translation = translateObject.translation;
                 endlist = new List<String>();
                 endlist.Add(translation);
                 if (translateObject.info.extraTranslations.Count() != 0)
@@ -126,6 +130,7 @@ namespace Aether_Console.Terminal
                 }
             }
             translations = endlist;
+            return translation;
         }
     }
 }
