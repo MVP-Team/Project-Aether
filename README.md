@@ -1,2 +1,2 @@
 # Project-Aether
-Virtual Destop Assistant
+Virtual Desktop Assistant
