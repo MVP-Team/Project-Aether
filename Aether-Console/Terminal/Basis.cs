@@ -96,9 +96,9 @@ namespace Aether_Console.Terminal
         }
 
 
-        private async static Task<string> Translate(string word)
+        private async static Task<string> Translate(string word, string toLang = "en", string fromLang = "auto")
         {
-            string url = "https://lingva.ml/api/v1/auto/en/" + word;
+            string url = "https://lingva.ml/api/v1/" + fromLang + "/"+ toLang + "/" + word;
             HttpClient client = new HttpClient();
             var request = new HttpRequestMessage
             {

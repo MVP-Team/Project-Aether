@@ -1,16 +1,21 @@
 ﻿
+using Aether_Console.Classes_JSON;
+using Amazon.Runtime.Internal.Transform;
 using LibreTranslate.Net;
 using Microsoft.Win32;
+using Nancy.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.Metrics;
 using System.Diagnostics.Tracing;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection.Metadata.Ecma335;
 using System.Runtime.InteropServices;
+using System.Text;
 using static System.Net.WebRequestMethods;
 
 namespace Aether_Console.Terminal
@@ -37,7 +42,6 @@ namespace Aether_Console.Terminal
             }
             catch
             {
-                // hack because of this: https://github.com/dotnet/corefx/issues/10361
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
                     search = search.Replace("&", "^&");
@@ -125,38 +129,132 @@ namespace Aether_Console.Terminal
 
         private static async void translator(string text)
         {
-            if (text.Length <= 100) {
-                string translation = "";
-                int? counter = 0;
-                while (counter != null) {
-                    counter = int.MaxValue;
-                    foreach (char c in KEYWORDS)
+            try
+            {
+                if (text.Length <= 100)
+                {
+                    string translation = "";
+                    int? counter = 0;
+                    while (counter != null)
                     {
-                        if (text.Contains(c))
+                        counter = int.MaxValue;
+                        foreach (char c in KEYWORDS)
                         {
-                            if (text.IndexOf(c) < counter)
+                            if (text.Contains(c))
                             {
-                                counter = text.IndexOf(c);
+                                if (text.IndexOf(c) < counter)
+                                {
+                                    counter = text.IndexOf(c);
+                                }
                             }
                         }
+
+                        if (counter != int.MaxValue)
+                        {
+                            string sentence = text.Substring(0, (int)(counter + 1));
+                            string lastCH = text.Substring((int)(counter), 1);
+                            if (lastCH != "?")
+                            {
+                                translation += $"{await LanguageCheck(text, sentence)}";
+                            }
+                            else
+                            {
+                                translation += $"{await LanguageCheck(text, sentence)}" + lastCH;
+                            }
+                            text = text.Substring((int)(counter + 2));
+                        }
+                        else if (text.Length > 3 && !text.StartsWith("to") && !text.StartsWith("from"))
+                        {
+                            translation += $"{await LanguageCheck(text)}";
+                            counter = null;
+                        }
+                        else
+                        {
+                            counter = null;
+                        }
                     }
-                    if (counter != int.MaxValue)
-                    {
-                        string sentence = text.Substring(0, (int)(counter + 1));
-                        string lastCH = text.Substring((int)(counter), 1);
-                        sentence = sentence.Replace(" ", "&");
-                        translation += $"{await Translate(sentence)}" + lastCH;
-                        text = text.Substring((int)(counter + 1));
-                    } else {
-                        counter = null;
-                    }
+                    Console.WriteLine(translation.Replace("&", " "));
                 }
-                Console.WriteLine(translation.Replace("&", " "));
-            } else
+                else
+                {
+                    Console.WriteLine("Please enter a text less long than 100 words!");
+                }
+            }catch (ArgumentException ex)
             {
-                Console.WriteLine("Please enter a text less long than 100 words!");
+                Console.WriteLine("Sorry, Aether couldn't find the requested languages");
             }
         } 
+
+        private static async Task<string> LanguageCheck(string text, string sentence = "")
+        {
+            if(sentence == "")
+            {
+                sentence = text;
+            }
+            var t1 = getLanguages();
+            List<Language> languages = t1.Result;
+            Dictionary<string, string> languagesDict = new ();
+            for(int i = 0; i < languages.Count; i++)
+            {
+                languagesDict.Add(languages[i].name, languages[i].code);
+            }
+            if (text.Contains("from") && text.Contains("to"))
+            {
+                string lstext = text.Substring(text.LastIndexOf("from") + 5);
+                string word1 = lstext.Substring(0, lstext.IndexOf(" "));
+                if (lstext.LastIndexOf("to") == -1)
+                {
+                    return await Translate(sentence);
+                }
+                string word2 = lstext.Substring(lstext.LastIndexOf("to") + 3);
+                if (languagesDict.ContainsKey(word1) && languagesDict.ContainsKey(word2))
+                {
+                    sentence = sentence.Replace(" ", "&");
+                    return await Translate(sentence, languagesDict[word2], languagesDict[word1]);
+                }
+                else
+                {
+                    throw new ArgumentException("Sorry, Aether couldn't find the requested languages");
+                }
+
+            } else if (text.Contains("to"))
+            {
+                string word = text.Substring(text.LastIndexOf("to") + 3);
+                if (languagesDict.ContainsKey(word))
+                {
+                    sentence = sentence.Replace(" ", "&");
+                    return await Translate(sentence, languagesDict[word]);
+                } else
+                {
+                    throw new ArgumentException("Sorry, Aether couldn't find the requested languages");
+                }
+            }
+            sentence = sentence.Replace(" ", "&");
+            return await Translate(sentence);
+        }
+
+        private static async Task<List<Language>> getLanguages()
+        {
+            string url = "https://lingva.ml/api/v1/languages/?:(source|target)";
+            HttpClient client = new HttpClient();
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri(url),
+                Content = new StringContent("", Encoding.UTF8, "application/json"),
+            };
+            string body = "";
+            List<Language> languages;
+            using (var response = await client.SendAsync(request))
+            {
+                response.EnsureSuccessStatusCode();
+                body = await response.Content.ReadAsStringAsync();
+                var js = new JavaScriptSerializer();
+                Root2 speaks = js.Deserialize<Root2>(body);
+                languages = speaks.languages;
+            }
+            return languages;
+        }
         private static string programmRun(string app, string directory)
         {
             string right = "";
