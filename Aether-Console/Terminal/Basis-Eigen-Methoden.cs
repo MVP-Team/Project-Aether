@@ -25,6 +25,7 @@ namespace Aether_Console.Terminal
 
         public static IDictionary<string, string> applications;
         public static readonly List<char> KEYWORDS = new List<char>(){ '.', '!', '?' };
+        private static Dictionary<string, string> languages = Languages();
         static Basis()
         {
             applications = Applications.allApplications;
@@ -93,6 +94,18 @@ namespace Aether_Console.Terminal
                 }
             }
 
+        }
+
+        private static Dictionary<string, string> Languages()
+        {
+            var t1 = getLanguages();
+            List<Language> languages = t1.Result;
+            Dictionary<string, string> languagesDict = new();
+            for (int i = 0; i < languages.Count; i++)
+            {
+                languagesDict.Add(languages[i].name.ToLower(), languages[i].code);
+            }
+            return languagesDict;
         }
 
         private static void Office()
@@ -191,26 +204,23 @@ namespace Aether_Console.Terminal
             {
                 sentence = text;
             }
-            var t1 = getLanguages();
-            List<Language> languages = t1.Result;
-            Dictionary<string, string> languagesDict = new ();
-            for(int i = 0; i < languages.Count; i++)
-            {
-                languagesDict.Add(languages[i].name, languages[i].code);
-            }
             if (text.Contains("from") && text.Contains("to"))
             {
                 string lstext = text.Substring(text.LastIndexOf("from") + 5);
-                string word1 = lstext.Substring(0, lstext.IndexOf(" "));
+                string word1 = lstext.Substring(0, lstext.IndexOf(" ")).ToLower();
                 if (lstext.LastIndexOf("to") == -1)
                 {
                     return await Translate(sentence);
                 }
-                string word2 = lstext.Substring(lstext.LastIndexOf("to") + 3);
-                if (languagesDict.ContainsKey(word1) && languagesDict.ContainsKey(word2))
+                string word2 = lstext.Substring(lstext.LastIndexOf("to") + 3).ToLower();
+                if (languages.ContainsKey(word1) && languages.ContainsKey(word2))
                 {
+                    if (text == sentence)
+                    {
+                        sentence = sentence.Substring(0, sentence.LastIndexOf("from") - 1);
+                    }
                     sentence = sentence.Replace(" ", "&");
-                    return await Translate(sentence, languagesDict[word2], languagesDict[word1]);
+                    return await Translate(sentence, languages[word2], languages[word1]);
                 }
                 else
                 {
@@ -219,11 +229,15 @@ namespace Aether_Console.Terminal
 
             } else if (text.Contains("to"))
             {
-                string word = text.Substring(text.LastIndexOf("to") + 3);
-                if (languagesDict.ContainsKey(word))
+                string word = text.Substring(text.LastIndexOf("to") + 3).ToLower();
+                if (languages.ContainsKey(word))
                 {
+                    if(text == sentence)
+                    {
+                        sentence = sentence.Substring(0, sentence.LastIndexOf("to") - 1);
+                    }
                     sentence = sentence.Replace(" ", "&");
-                    return await Translate(sentence, languagesDict[word]);
+                    return await Translate(sentence, languages[word]);
                 } else
                 {
                     throw new ArgumentException("Sorry, Aether couldn't find the requested languages");
