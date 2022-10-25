@@ -24,6 +24,7 @@ namespace Aether_Console.Terminal
         private static List<string> translations = new List<string>();
         public void Lines()
         {
+            
             string? beginning = Console.ReadLine();
 
             bool ask = false;
