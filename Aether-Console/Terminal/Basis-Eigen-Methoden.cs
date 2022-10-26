@@ -36,7 +36,6 @@ namespace Aether_Console.Terminal
         public static void Search(string term)
         {
             string search = $"https://www.google.com/search?q={term}";
-
             try
             {
                 Process.Start(search);

@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AWSSDK.Core" Version="3.7.13.22" />
+    <PackageReference Include="AWSSDK.Core" Version="3.7.100.1" />
     <PackageReference Include="LibreTranslate.Net" Version="1.0.1" />
     <PackageReference Include="Nancy" Version="2.0.0" />
   </ItemGroup>

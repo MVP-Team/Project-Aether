@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\HTL\\3BHIF\\Aether_new\\Project-Aether\\Aether-Console\\Aether-Console.csproj": {}
+    "C:\\HTL\\3BHIF\\Projekt Aether\\PJ_AE\\Aether-Console\\Aether-Console.csproj": {}
   },
   "projects": {
-    "C:\\HTL\\3BHIF\\Aether_new\\Project-Aether\\Aether-Console\\Aether-Console.csproj": {
+    "C:\\HTL\\3BHIF\\Projekt Aether\\PJ_AE\\Aether-Console\\Aether-Console.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\HTL\\3BHIF\\Aether_new\\Project-Aether\\Aether-Console\\Aether-Console.csproj",
+        "projectUniqueName": "C:\\HTL\\3BHIF\\Projekt Aether\\PJ_AE\\Aether-Console\\Aether-Console.csproj",
         "projectName": "Aether-Console",
-        "projectPath": "C:\\HTL\\3BHIF\\Aether_new\\Project-Aether\\Aether-Console\\Aether-Console.csproj",
-        "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-        "outputPath": "C:\\HTL\\3BHIF\\Aether_new\\Project-Aether\\Aether-Console\\obj\\",
+        "projectPath": "C:\\HTL\\3BHIF\\Projekt Aether\\PJ_AE\\Aether-Console\\Aether-Console.csproj",
+        "packagesPath": "C:\\Users\\zlend\\.nuget\\packages\\",
+        "outputPath": "C:\\HTL\\3BHIF\\Projekt Aether\\PJ_AE\\Aether-Console\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\zlend\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -46,7 +46,7 @@
           "dependencies": {
             "AWSSDK.Core": {
               "target": "Package",
-              "version": "[3.7.13.22, )"
+              "version": "[3.7.100.1, )"
             },
             "LibreTranslate.Net": {
               "target": "Package",
@@ -73,7 +73,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
