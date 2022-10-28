@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Net;
+using System.Net.Http;
 using System.Net.Http.Headers;
 using static System.Net.Mime.MediaTypeNames;
 using System.Collections.Immutable;
@@ -15,6 +16,7 @@ using System.Net.Mime;
 using Aether_Console.Classes_JSON;
 using Nancy.Json;
 using static System.Net.WebRequestMethods;
+using Newtonsoft.Json.Linq;
 
 namespace Aether_Console.Terminal
 {
@@ -22,6 +24,8 @@ namespace Aether_Console.Terminal
     {
         public static readonly List<string> COMMANDS = new() { "open", "search", "translate" };
         private static List<string> translations = new List<string>();
+        public Database db = new Database();
+        Random rnd = new Random();
         public void Lines()
         {
             string? beginning = Console.ReadLine();
@@ -71,6 +75,11 @@ namespace Aether_Console.Terminal
                 {
                     Console.WriteLine("Sorry there is no such keyword!");
                 }
+            }
+
+            if(line.Substring(line.LastIndexOf(" ") + 1).ToLower().Equals("joke"))
+            {
+                db.getJoke("select joke from jokes where id =" + rnd.Next(1,46).ToString());
             }
 
             switch (snLine)
@@ -131,6 +140,14 @@ namespace Aether_Console.Terminal
             }
             translations = endlist;
             return translation;
+        }
+
+        private async static Task<string> GetJoke()
+        {
+            var client = new HttpClient();
+            var response = await client.GetAsync("https://jokeapi.dev/joke/Any?format=txt&type=single&blacklistFlags=nsfw,racist,sexist&lang=en");
+            var joke = await response.Content.ReadAsStringAsync();
+            return joke;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
@@ -10,3 +10,4 @@ using Aether_Console.Terminal;
 
 Basis bas = new Basis();
 bas.Lines();
+Console.ReadLine();
