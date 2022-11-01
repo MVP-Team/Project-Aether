@@ -1,8 +1,10 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using GUI.ViewModels;
+using GUI.Views;
 
-namespace Aether
+namespace GUI
 {
     public partial class App : Application
     {
@@ -15,7 +17,12 @@ namespace Aether
         {
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-                desktop.MainWindow = new MainWindow();
+                desktop.MainWindow = new MainWindow
+                {
+                    DataContext = new MainWindowViewModel(),
+                };
+                desktop.MainWindow.Position.ToPoint(new Point(4, -4));
+                    
             }
 
             base.OnFrameworkInitializationCompleted();
