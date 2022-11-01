@@ -1,12 +1,14 @@
 using Avalonia.Controls;
 
-namespace Aether
+namespace GUI.Views
 {
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+
+
         }
     }
 }

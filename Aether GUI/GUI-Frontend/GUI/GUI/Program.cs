@@ -1,9 +1,9 @@
 using Avalonia;
-using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.ReactiveUI;
 using System;
 
-namespace Aether
+namespace GUI
 {
     internal class Program
     {
@@ -18,6 +18,9 @@ namespace Aether
         public static AppBuilder BuildAvaloniaApp()
             => AppBuilder.Configure<App>()
                 .UsePlatformDetect()
-                .LogToTrace();
+                .LogToTrace()
+                .UseReactiveUI();
+
+
     }
 }
