@@ -12,6 +12,7 @@
     <AvaloniaResource Include="Assets\**" />
     <None Remove=".gitignore" />
     <None Remove="Assets\icons8-keyboard-48.png" />
+    <None Remove="Assets\icons8-menu-rounded-50.png" />
   </ItemGroup>
   <ItemGroup>
     <!--This helps with theme dll-s trimming.

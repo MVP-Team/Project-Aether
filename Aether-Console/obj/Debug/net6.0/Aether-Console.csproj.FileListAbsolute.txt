@@ -59,3 +59,26 @@ C:\HTL\3BHIF\Projekt Aether\PJ_AE\Aether-Console\bin\Debug\net6.0\Newtonsoft.Jso
 C:\HTL\3BHIF\Projekt Aether\PJ_AE\Aether-Console\obj\Debug\net6.0\Aether-Console.csproj.CopyComplete
 C:\HTL\3BHIF\Projekt Aether\PJ_AE\Aether-Console\obj\Debug\net6.0\Aether-Console.genruntimeconfig.cache
 C:\HTL\3BHIF\Projekt Aether\PJ_AE\Aether-Console\obj\Debug\net6.0\ref\Aether-Console.dll
+C:\HTL\Drittes_Schuljahr\PRE\SEM1\Project-Aether\Aether-Console\bin\Debug\net6.0\Aether-Console.exe
+C:\HTL\Drittes_Schuljahr\PRE\SEM1\Project-Aether\Aether-Console\bin\Debug\net6.0\Aether-Console.deps.json
+C:\HTL\Drittes_Schuljahr\PRE\SEM1\Project-Aether\Aether-Console\bin\Debug\net6.0\Aether-Console.runtimeconfig.json
+C:\HTL\Drittes_Schuljahr\PRE\SEM1\Project-Aether\Aether-Console\bin\Debug\net6.0\Aether-Console.dll
+C:\HTL\Drittes_Schuljahr\PRE\SEM1\Project-Aether\Aether-Console\bin\Debug\net6.0\Aether-Console.pdb
+C:\HTL\Drittes_Schuljahr\PRE\SEM1\Project-Aether\Aether-Console\bin\Debug\net6.0\AWSSDK.Core.dll
+C:\HTL\Drittes_Schuljahr\PRE\SEM1\Project-Aether\Aether-Console\bin\Debug\net6.0\LibreTranslate.Net.dll
+C:\HTL\Drittes_Schuljahr\PRE\SEM1\Project-Aether\Aether-Console\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\HTL\Drittes_Schuljahr\PRE\SEM1\Project-Aether\Aether-Console\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\HTL\Drittes_Schuljahr\PRE\SEM1\Project-Aether\Aether-Console\bin\Debug\net6.0\Microsoft.Extensions.PlatformAbstractions.dll
+C:\HTL\Drittes_Schuljahr\PRE\SEM1\Project-Aether\Aether-Console\bin\Debug\net6.0\Nancy.dll
+C:\HTL\Drittes_Schuljahr\PRE\SEM1\Project-Aether\Aether-Console\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\HTL\Drittes_Schuljahr\PRE\SEM1\Project-Aether\Aether-Console\obj\Debug\net6.0\Aether-Console.csproj.AssemblyReference.cache
+C:\HTL\Drittes_Schuljahr\PRE\SEM1\Project-Aether\Aether-Console\obj\Debug\net6.0\Aether-Console.GeneratedMSBuildEditorConfig.editorconfig
+C:\HTL\Drittes_Schuljahr\PRE\SEM1\Project-Aether\Aether-Console\obj\Debug\net6.0\Aether-Console.AssemblyInfoInputs.cache
+C:\HTL\Drittes_Schuljahr\PRE\SEM1\Project-Aether\Aether-Console\obj\Debug\net6.0\Aether-Console.AssemblyInfo.cs
+C:\HTL\Drittes_Schuljahr\PRE\SEM1\Project-Aether\Aether-Console\obj\Debug\net6.0\Aether-Console.csproj.CoreCompileInputs.cache
+C:\HTL\Drittes_Schuljahr\PRE\SEM1\Project-Aether\Aether-Console\obj\Debug\net6.0\Aether-Console.csproj.CopyComplete
+C:\HTL\Drittes_Schuljahr\PRE\SEM1\Project-Aether\Aether-Console\obj\Debug\net6.0\Aether-Console.dll
+C:\HTL\Drittes_Schuljahr\PRE\SEM1\Project-Aether\Aether-Console\obj\Debug\net6.0\refint\Aether-Console.dll
+C:\HTL\Drittes_Schuljahr\PRE\SEM1\Project-Aether\Aether-Console\obj\Debug\net6.0\Aether-Console.pdb
+C:\HTL\Drittes_Schuljahr\PRE\SEM1\Project-Aether\Aether-Console\obj\Debug\net6.0\Aether-Console.genruntimeconfig.cache
+C:\HTL\Drittes_Schuljahr\PRE\SEM1\Project-Aether\Aether-Console\obj\Debug\net6.0\ref\Aether-Console.dll

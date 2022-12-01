@@ -5663,23 +5663,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\zlend\\.nuget\\packages\\": {},
+    "C:\\Users\\Phili\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\HTL\\3BHIF\\Projekt Aether\\PJ_AE\\Aether-Console\\Aether-Console.csproj",
+      "projectUniqueName": "C:\\HTL\\Drittes_Schuljahr\\PRE\\SEM1\\Project-Aether\\Aether-Console\\Aether-Console.csproj",
       "projectName": "Aether-Console",
-      "projectPath": "C:\\HTL\\3BHIF\\Projekt Aether\\PJ_AE\\Aether-Console\\Aether-Console.csproj",
-      "packagesPath": "C:\\Users\\zlend\\.nuget\\packages\\",
-      "outputPath": "C:\\HTL\\3BHIF\\Projekt Aether\\PJ_AE\\Aether-Console\\obj\\",
+      "projectPath": "C:\\HTL\\Drittes_Schuljahr\\PRE\\SEM1\\Project-Aether\\Aether-Console\\Aether-Console.csproj",
+      "packagesPath": "C:\\Users\\Phili\\.nuget\\packages\\",
+      "outputPath": "C:\\HTL\\Drittes_Schuljahr\\PRE\\SEM1\\Project-Aether\\Aether-Console\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\zlend\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Phili\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5735,7 +5735,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

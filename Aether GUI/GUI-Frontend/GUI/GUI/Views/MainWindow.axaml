@@ -3,32 +3,45 @@
         xmlns:vm="using:GUI.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450" 
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 		CanResize="False" Height="350" Width="500"
 		CornerRadius="15" WindowStartupLocation="Manual"
+		HasSystemDecorations="False"
         x:Class="GUI.Views.MainWindow"
         Icon="/Assets/aet.ico"
         Title="Aether">
 
 	<Window.Styles>
+
 		<Style Selector="TextBlock.h1">
 			<Setter Property="FontSize" Value="24"></Setter>
 			<Setter Property="FontStyle" Value="Italic"></Setter>
 			<Setter Property="FontWeight" Value="DemiBold"></Setter>
 		</Style>
 
-		<Style Selector="TextBox.inputTxtbox">
-			<Setter Property="CornerRadius" Value="5"></Setter>
-			<Setter Property="Foreground" Value="#d3d3d3"></Setter>
-			<Setter Property="Background" Value="#100c08"></Setter>
-		</Style>
+		
 
 		<Style Selector="StackPanel.posCenter, Image.posCenter">
 			<Setter Property="HorizontalAlignment" Value="Center"></Setter>
-			<Setter Property="Height" Value="170"></Setter>
+			<Setter Property="Height" Value="180"></Setter>
 		</Style>
+
+		<Style Selector="Expander#expanderMenu">
+			<Setter Property="Opacity" Value="0.3"/>
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="ExpandDirection" Value="Down"/>
+			<Setter Property="HorizontalAlignment" Value="Left"/>
+		</Style>
+
+		<Style Selector="Expander#expanderMenu > StackPanel, Image">
+			<Setter Property="Opacity" Value="100"/>
+		</Style>
+
+		<Style Selector="Image.AetherWelcomeVisibility, TextBlock.AetherWelcomeVisibility">
+			<Setter Property="IsVisible" Value="{Binding AetherWelcomeVisibility}"/>
+		</Style>
+
 	</Window.Styles>
-    
 
 	<Panel Background="#313131">
 		<Design.DataContext>
@@ -36,22 +49,51 @@
 		</Design.DataContext>
 
 
-		<TextBlock Height="269" Text="{Binding Greeting}" Classes="h1" HorizontalAlignment="Center" Foreground="#aaaaff" VerticalAlignment="Center"/>
 
-		
+		<TextBlock Height="240" Text="{Binding Greeting}" Classes="h1 AetherWelcomeVisibility" HorizontalAlignment="Center" Foreground="#aaaaff" VerticalAlignment="Center"/>
+
+		<Expander Name="expanderMenu" UseLayoutRounding="True">
+
+
+			<Expander.Header>
+				<Image Source="/Assets/icons8-menu-rounded-50.png" Width="20" Height="20" Stretch="Fill"></Image>
+			</Expander.Header>
+
+
+			<StackPanel>
+				<Label Content="Label 1"></Label>
+				<Label Content="Label 2"></Label>
+				<Label Content="Label 3"></Label>
+				<Label Content="About"></Label>
+			</StackPanel>
+		</Expander>
+
 		<StackPanel Classes="posCenter">
-			<Image Source="/Assets/aet.ico" Stretch="Uniform" Classes="posCenter"/>
+			<Image Source="/Assets/aet.png" Width="125" Stretch="Uniform" Classes="posCenter AetherWelcomeVisibility"/>
 			<!--Bei About Section dann etwas schreiben wie "Icons from Icons8".-->
-			<Button Background="#313131" HorizontalAlignment="Center" Margin="0 11 0 0" Command="{Binding EnableTxtInput}">
+			<Button Background="#313131" HorizontalAlignment="Center" Margin="0 -20 0 0" Command="{Binding EnableTxtInput}">
 				<Image Source="/Assets/icons8-keyboard-48.png" Width="30" Stretch="Fill"></Image>
 			</Button>
 		</StackPanel>
 
 		<StackPanel VerticalAlignment="Bottom">
-			<TextBox IsVisible="{Binding TxtBoxVisibility}" Classes="inputTxtbox" Watermark="Please enter your request"></TextBox>
-		</StackPanel>
-		
-	</Panel>
+			<StackPanel.Styles>
+				<Style Selector="TextBox#inputTxtbox">
+					<Setter Property="CornerRadius" Value="5"></Setter>
+					<Setter Property="Foreground" Value="#d3d3d3"></Setter>
+					<Setter Property="Background" Value="#100c08"></Setter>
+					<Setter Property="Watermark" Value="Please enter your request"/>
+					
+					<Setter Property="IsVisible" Value="{Binding TxtBoxVisibility}"/>
+				</Style>
 
+				<Style Selector="TextBox#inputTxtbox:focus">
+					<Setter Property="Foreground" Value="Black"></Setter>
+				</Style>
+			</StackPanel.Styles>
+			<TextBox Name="inputTxtbox"></TextBox>
+		</StackPanel>
+
+	</Panel>
 
 </Window>
