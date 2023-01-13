@@ -1,6 +1,5 @@
 ﻿
 using Aether_Console.Classes_JSON;
-using Amazon.Runtime.Internal.Transform;
 using LibreTranslate.Net;
 using Microsoft.Win32;
 using Nancy.Json;
@@ -63,6 +62,10 @@ namespace Aether_Console.Terminal
         }
         public static void Application(string app)
         {
+            if (app.Contains("."))
+            {
+                app = app.Substring(0, app.IndexOf("."));
+            }
             try
             {
                 Process.Start($"{app.ToLower()}.exe");
@@ -121,6 +124,7 @@ namespace Aether_Console.Terminal
 
         private static string FindDirectoryByName(string app)
         {
+            
             if (app.Length < 3)
             {
                 throw new ArgumentException("Sorry there is no Application!");
@@ -152,6 +156,13 @@ namespace Aether_Console.Terminal
                         counter = int.MaxValue;
                         foreach (char c in KEYWORDS)
                         {
+                            if (text.Contains(c))
+                            {
+                                if (text.LastIndexOf(c) == text.Length - 1)
+                                {
+                                    text = text.Substring(0, text.LastIndexOf(c));
+                                }
+                            }
                             if (text.Contains(c))
                             {
                                 if (text.IndexOf(c) < counter)
@@ -203,15 +214,15 @@ namespace Aether_Console.Terminal
             {
                 sentence = text;
             }
-            if (text.Contains("from") && text.Contains("to"))
+            if (text.Contains("from") && text.Contains("into"))
             {
                 string lstext = text.Substring(text.LastIndexOf("from") + 5);
                 string word1 = lstext.Substring(0, lstext.IndexOf(" ")).ToLower();
-                if (lstext.LastIndexOf("to") == -1)
+                if (lstext.LastIndexOf("into") == -1)
                 {
                     return await Translate(sentence);
                 }
-                string word2 = lstext.Substring(lstext.LastIndexOf("to") + 3).ToLower();
+                string word2 = lstext.Substring(lstext.LastIndexOf("into") + 5).ToLower();
                 if (languages.ContainsKey(word1) && languages.ContainsKey(word2))
                 {
                     if (text == sentence)
@@ -226,21 +237,23 @@ namespace Aether_Console.Terminal
                     throw new ArgumentException("Sorry, Aether couldn't find the requested languages");
                 }
 
-            } else if (text.Contains("to"))
+            } else if (text.Contains("into"))
             {
-                string word = text.Substring(text.LastIndexOf("to") + 3).ToLower();
+                string word = text.Substring(text.LastIndexOf("into") + 5).ToLower();
+                Console.WriteLine(word);
                 if (languages.ContainsKey(word))
                 {
-                    if(text == sentence)
+                    if (text == sentence)
                     {
-                        sentence = sentence.Substring(0, sentence.LastIndexOf("to") - 1);
+                        sentence = sentence.Substring(0, sentence.LastIndexOf("into") - 1);
                     }
                     sentence = sentence.Replace(" ", "&");
                     return await Translate(sentence, languages[word]);
-                } else
+                }
+                else
                 {
                     throw new ArgumentException("Sorry, Aether couldn't find the requested languages");
-                }
+                }      
             }
             sentence = sentence.Replace(" ", "&");
             return await Translate(sentence);
