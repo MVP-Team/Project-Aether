@@ -5,7 +5,7 @@ import whisper
 model = whisper.load_model("base")
 
 # We can pass in a filename or a tensor (PyTorch or numpy).
-result = model.transcribe("runtimes/Audios/system_recorded_audio.wav", task="translate")
+result = model.transcribe("system_recorded_audio.wav", task="translate")
 
 # Print the transcript.
 my_file = open("audio_text.txt","w+")

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CpHidw/CEJxCbM57wanfK4Ff/ZC7M+psDDloKWOjpqlLoeJyPndIKBnzjt5ZhIqAU0VZYXKwgQwdNMTP8uDwOg==",
+  "dgSpecHash": "X8lZ1HcbDoG3cIWB1cD+tYQ+bEyvnklEGi4DpVljMtDqRe05+Hp6QHKLQq3NZjyRNiPgxsy5pAecg51Hw45BiA==",
   "success": true,
-  "projectFilePath": "C:\\HTL\\3BHIF\\Aether\\Project-Aether\\Aether-Console\\Aether-Console.csproj",
+  "projectFilePath": "C:\\HTL\\3BHIF\\Aether\\Aether-Console\\Aether-Console.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Alex\\.nuget\\packages\\libretranslate.net\\1.0.1\\libretranslate.net.1.0.1.nupkg.sha512",
     "C:\\Users\\Alex\\.nuget\\packages\\microsoft.dotnet.platformabstractions\\2.0.4\\microsoft.dotnet.platformabstractions.2.0.4.nupkg.sha512",

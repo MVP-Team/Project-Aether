@@ -6048,11 +6048,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\HTL\\3BHIF\\Aether\\Project-Aether\\Aether-Console\\Aether-Console.csproj",
+      "projectUniqueName": "C:\\HTL\\3BHIF\\Aether\\Aether-Console\\Aether-Console.csproj",
       "projectName": "Aether-Console",
-      "projectPath": "C:\\HTL\\3BHIF\\Aether\\Project-Aether\\Aether-Console\\Aether-Console.csproj",
+      "projectPath": "C:\\HTL\\3BHIF\\Aether\\Aether-Console\\Aether-Console.csproj",
       "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-      "outputPath": "C:\\HTL\\3BHIF\\Aether\\Project-Aether\\Aether-Console\\obj\\",
+      "outputPath": "C:\\HTL\\3BHIF\\Aether\\Aether-Console\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

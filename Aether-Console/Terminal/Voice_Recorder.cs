@@ -19,7 +19,7 @@ namespace Aether_Console.Terminal
             // Create a new WaveInEvent to record audio
             WaveInEvent waveIn = new WaveInEvent();
 
-            string outputFilePath = $"{Environment.CurrentDirectory}\\runtimes\\Audios\\system_recorded_audio.wav";
+            string outputFilePath = $"{Environment.CurrentDirectory}\\system_recorded_audio.wav";
 
             var waveFile = new WaveFileWriter(outputFilePath, waveIn.WaveFormat);
 

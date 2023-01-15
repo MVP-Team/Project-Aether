@@ -4,6 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.IO.Compression;
+using Microsoft.VisualBasic.FileIO;
 
 namespace Aether_Console.Terminal
 {
@@ -31,12 +34,52 @@ namespace Aether_Console.Terminal
             System.IO.File.Move($"{s}\\Python\\python.exe", $"{s}\\Python\\python399.exe");
 
             var name = "PATH";
-            var scope = EnvironmentVariableTarget.Machine; // or User
-            var oldValue = Environment.GetEnvironmentVariable(name, scope);
-            if (!oldValue.Contains($"{s}\\Python") && !!oldValue.Contains($"{s}\\Python\\Scripts") && !!oldValue.Contains($"{s}\\Python\\ffmpeg\\bin"))
+            var scope = EnvironmentVariableTarget.User; // or User
+            var Value = Environment.GetEnvironmentVariable(name, scope);
+            Value = Value ?? @$"{s}\Python";
+            if (!Value.Contains($"{s}\\Python") && !Value.Contains($"{s}\\Python\\Scripts"))
             {
-                var newValue = oldValue + @$";{s}\Python;{s}\Python\Scripts;{s}\Python\ffmpeg\bin";
-                Environment.SetEnvironmentVariable(name, newValue, scope);
+                Value = Value + @$";{s}\Python";
+                Value = Value + @$";{s}\Python\Scripts";
+
+                Environment.SetEnvironmentVariable(name, Value, scope);
+            }
+
+            startInfo.Arguments = "/C python399 -m pip install wget";
+
+            // Start the process with the info we specified.
+            // Call WaitForExit and then the using statement will close.
+            using (Process exeProcess = Process.Start(startInfo))
+            {
+                exeProcess.WaitForExit();
+            }
+
+            startInfo.Arguments = @$"/C python399 -m wget https://github.com//BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl.zip -o {s}\Python";
+
+            // Start the process with the info we specified.
+            // Call WaitForExit and then the using statement will close.
+            using (Process exeProcess = Process.Start(startInfo))
+            {
+                exeProcess.WaitForExit();
+            }
+
+            var zipPath = @$"{s}/Python/ffmpeg-master-latest-win64-gpl.zip";
+            var extractPath = @$"{s}/Python";
+
+            ZipFile.ExtractToDirectory(zipPath, extractPath);
+
+            //Directory.Move(@$"{s}\Python\ffmpeg-master-latest-win64-gpl", @$"{s}\Python\ffmpeg");
+
+            FileSystem.RenameDirectory(@$"{s}\Python\ffmpeg-master-latest-win64-gpl", "ffmpeg");
+
+            System.IO.File.Delete(zipPath);
+
+            Value = Environment.GetEnvironmentVariable(name, scope);
+            Value = Value ?? @$"{s}\Python";
+            if (!Value.Contains($"{s}\\Python\\ffmpeg\\bin"))
+            {
+                Value = Value + @$";{s}\ffmpeg\bin";
+                Environment.SetEnvironmentVariable(name, Value, scope);
             }
 
             startInfo.Arguments = "/C python399 -m pip install torch torchvision torchaudio";
