@@ -29,7 +29,6 @@ Aether open Chrome
 Before you begin building the application, you must have the following prerequisites installed on your system:
 
 - [Node.js](https://nodejs.org/dist/v18.13.0/node-v18.13.0-x64.msi)
-- [Electron.js](https://www.electronjs.org/)
 
 ## Building
 
