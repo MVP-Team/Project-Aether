@@ -54,5 +54,5 @@ To build Aether, open a command prompt inside the project directory. Then type t
 ### Step 4
 
 To build Electron App you need to:
-run the ```bash npm i``` command
-and can after that run the app using ```bash npm start```
+run the ```npm i``` command
+and can after that run the app using ```npm start```
