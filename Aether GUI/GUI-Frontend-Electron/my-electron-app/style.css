@@ -1,0 +1,179 @@
+:root {
+    --fallback-title-bar-height: 40px;
+  }
+  
+  .draggable {
+    -webkit-app-region: drag;
+  }
+  
+  .nonDraggable {
+    -webkit-app-region: no-drag;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    -webkit-user-select: none;
+  }
+  
+  #titleBarContainer {
+    position: absolute;
+    top: env(titlebar-area-y, 0);
+    width: 100%;
+    height: 30px;
+    background-color:#2f3241;
+  }
+  
+  #titleBar {
+    position: absolute;
+    top: 0;
+    display: flex;
+    user-select: none;
+    height: 100%;
+    left: env(titlebar-area-x, 0);
+    width: env(titlebar-area-width, 100%);
+  
+    color: #FFFFFF;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  #titleBar > span {
+    margin: auto;
+    padding: 0px 16px 0px 16px;
+  }
+  
+  #titleBar > input {
+    flex: 1;
+    margin: 8px;
+    border-radius: 5px;
+    border: none;
+    padding: 8px;
+  }
+  
+  #mainContent {
+    height: calc(100% - var(--fallback-title-bar-height));
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: env(titlebar-area-height, var(--fallback-title-bar-height));
+    overflow-y: scroll;
+  }
+
+  #content {
+    position: relative;
+}
+
+#content > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s ease-in-out;
+}
+
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+button {
+    background-color: #061426;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 20px;
+    width: 250px;
+    height: 45px;
+    cursor: pointer;
+    
+    
+}
+.loading {
+    padding: 16px;
+    color: #FFFFFF;
+}
+
+#choices{
+    justify-content: center;
+    text-align: center;
+   
+}
+
+body {
+  margin-top: 25px;
+}
+
+button:hover {
+    background-color: #0077FF;;
+}
+button:active {
+    background-color: darkblue;
+}
+button:focus {
+    outline: none;
+}
+
+.icons-left {
+    padding: 10px;
+}
+
+#search-container {
+  width: 300px;
+  margin: 0 auto;
+  text-align: center;
+  top: 70%;
+  position: fixed;
+}
+
+#search-form {
+  display: flex;
+  color: #061426;
+  align-items: center;
+  justify-content: center;
+}
+
+#search-input {
+  width: 100%;
+  padding: 12px;
+  color: #061426;
+  border: #061426;
+  border-radius: 20;
+  font-size: 16px;
+  margin-right: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+#search-input:focus {
+  width: 100%;
+  outline: none;
+  border-radius: 0;
+}
+
+#search-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+#search-button:hover {
+  transform: scale(1.1);
+}
+
+#search-button i {
+  font-size: 20px;
+  color: rgb(161, 161, 161);
+  transition: all 0.3s ease-in-out;
+}
+
+#search-button:hover i {
+  color: rgb(255, 255, 255);
+}
+
