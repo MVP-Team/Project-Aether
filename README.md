@@ -50,3 +50,9 @@ git clone https://github.com/MVP-Team/Project-Aether.git
 
 To build Aether, open a command prompt inside the project directory. Then type the following command:
 `dotnet build -c Release -o build` the built files will be found in the newly created build directory.
+
+### Step 4
+
+To build Electron App you need to:
+run the ```bash npm i``` command
+and can after that run the app using ```bash npm start```
