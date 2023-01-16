@@ -57,7 +57,8 @@ To build Electron App you need to:
 run the
 ```bash
 npm i
-``` command
+```
+command
 after that, run the app using 
 ```bash
 npm start
