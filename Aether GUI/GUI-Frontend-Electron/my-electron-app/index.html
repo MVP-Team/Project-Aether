@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Aether</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<html>
+
+<body class="text-white bg-gray-800">
+  <div id="container">
+    <div id="choices" class="">
+      <button id="choice1" class="rounded-full justify-self-center">
+        <i class="fa-sharp fa-solid fa-house icons-left"></i>
+        Dashboard
+        <i class="fa-sliders-simple"></i>
+      </button>
+      <button id="choice2">
+        Tasks
+      </button>
+      <button id="choice3">Weather</button>
+      <button id="choice4">History</button>
+    </div>
+
+    <div id="content" class="loading">
+
+      <div id="content1" class="visible text-black ">
+      </div>
+      
+      <div id="content2" class="hidden">
+        <div class="absolute scale-[50%] transition-all duration-700" id="aetherLogo"><img src="aet.png"></div>
+        <label class="relative block top-[290px] ml-3 w-[70%] overflow-clip transition-all duration-1000 delay-200" id="labelC2">
+          <span class="sr-only">Search</span>
+          <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+            <div class="h-5 w-5  fill-slate-800" viewBox="0 0 20 20"><i class="fa fa-search"></i></div>
+          </span>
+          <input
+            class="placeholder:italic placeholder:text-slate-400 block bg-blue-500 w-[50%] border transition-all border-slate-300 focus:w-[100%] rounded-full py-2 pl-9 pr-3 shadow-sm 
+            focus:rounded-2xl ring-1 focus:outline-none focus:bg-blue-600 focus:border-violet-500" id="inputField" onkeypress="ClickPress(event);"
+            placeholder="Ask something" type="text" name="search" />
+         </label>
+  
+          <div class="flex absolute top-[285px] left-[15rem] transition-all duration-1000 delay-200" id="micC2">
+            <div
+              class="transition-all absolute h-14 w-14 -top-1 -left-2 rounded-full bg-gradient-to-r from-purple-400 via-blue-500 to-red-400 animate-spin opacity-0 scale-90"
+              id="microphone">
+            </div>
+            <div
+              class="cursor-pointer absolute h-10 w-10 top-1 rounded-full border-2 border-gray-900 bg-gray-800 "
+              id="dot1" onclick="document.getElementById('microphone').classList.toggle('opacity-0');
+              document.getElementById('microphone').classList.toggle('scale-90');"
+              onclick=toggleRecording()></div>
+          </div>
+          <div class="w-[90%] h-auto transition-all mx-auto rounded-lg border-violet-600 relative top-[200%] duration-700 delay-1000" id="outBorderC2"><p class="opacity-0 duration-700 delay-1000 w-[100%] h-auto overflow-hidden" id="outputC2"></p></div>
+      </div>
+
+      <div id="content3" class="hidden">
+
+      </div>
+
+      <div id="content4" class="hidden">
+
+      </div>
+
+    </div>
+  </div>
+  </div>
+  <div class="p-4 flex justify-evenly  w-full absolute bottom-0">
+    <div class="flex">
+      <div class="bg-gray-800 text-white p-2 rounded-lg hover:bg-gray-700 mr-2" onclick="document.body.classList.remove('bg-gray-100'); document.body.classList.add('bg-gray-900'); 
+      document.body.classList.remove('text-black'); document.body.classList.add('text-white')">Dark Mode</div>
+      <div class="bg-white text-gray-800 p-2 rounded-lg hover:bg-gray-200" onclick="document.body.classList.remove('bg-gray-900'); document.body.classList.add('bg-gray-100');
+      document.body.classList.remove('text-white'); document.body.classList.add('text-black')">Light Mode</div>
+    </div>
+  </div>
+</body>
+<script src="menu.js"></script>
+<script src="task.js"></script>
+</html>
