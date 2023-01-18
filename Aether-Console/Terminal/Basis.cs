@@ -22,12 +22,13 @@ namespace Aether_Console.Terminal
 {
     partial class Basis
     {
-        public static readonly List<string> COMMANDS = new() { "open", "search", "translate", "close", "open,", "search,", "translate,", "close" };
+        public static readonly List<string> COMMANDS = new() { "open", "search", "translate", "close", "open,", "search,", "translate,", "close", "joke" };
         private static List<string> translations = new List<string>();
         public static void Lines()
         {
             string s = Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.IndexOf("Aether-Console"));
-            if (!System.IO.File.Exists(@$"{s}/Python/python399.exe")) {
+            if (!System.IO.File.Exists(@$"{s}/Python/python399.exe"))
+            {
                 Console.WriteLine("Wait until the installation is finished ;)!!!");
                 Installation.installation();
                 Console.WriteLine("Now you can start to use the programm!!!");
@@ -111,9 +112,18 @@ namespace Aether_Console.Terminal
                     Console.WriteLine("Bye bye, see you later! ;)");
                     Environment.Exit(0);
                     break;
-                   
+                case "joke":
+                    GetJoke();
+                    break;
                 default:
-                    Console.WriteLine("Please enter a valid command.");
+                    if (line.Substring(line.LastIndexOf(" ") + 1).ToLower().Equals("joke"))
+                    {
+                        GetJoke();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please enter a valid command.");
+                    }
                     break;
             }
             Lines();
@@ -155,6 +165,14 @@ namespace Aether_Console.Terminal
             }
             translations = endlist;
             return translation;
+        }
+
+        private async static void GetJoke()
+        {
+            var client = new HttpClient();
+            var response = await client.GetAsync("https://v2.jokeapi.dev/joke/Miscellaneous,Spooky,Christmas?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&format=txt&type=single");
+            var joke = await response.Content.ReadAsStringAsync();
+            Console.WriteLine(joke);
         }
     }
 }
