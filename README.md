@@ -3,8 +3,9 @@
 ## Features
 
 - TODO app
-- Search the internet
-- Open apps
+- Search in the internet
+- Open apps (Only under Windows)
+- Translate sentences
 
 ## Downloads
 
@@ -18,10 +19,10 @@ Download from [releases](https://github.com/MVP-Team/Project-Aether/releases).
 
 ## Use Case
 
-Open a app with Aether.
+Sercht the web with Aether.
 
 ```bash
-Aether open Chrome
+Search the tallest building in the world
 ```
 
 ## Prerequisites
@@ -48,12 +49,13 @@ git clone https://github.com/MVP-Team/Project-Aether.git
 
 ### Step 3
 
-To build Aether, open a command prompt inside the project directory. Then type the following command:
+To run Aether, open a command prompt inside the project directory. Then type the following commands:
 
 ```
-dotnet build -c Release -o build
+cd Aether-Console\bin\Debug\net6.0
+dotnet Aether-Console.dll
 ``` 
-the built files will be found in the newly created build directory.
+Afterwards you are free to use the application.
 
 ### Step 4
 
@@ -66,4 +68,18 @@ command
 after that, run the app using 
 ```bash
 npm start
+```
+
+## Commands that you can use in Aether:
+
+```bash
+Search [your request]
+
+Translate [Your sentence] from [From language] into [Wished Language]
+
+Translate [Your sentence] into [Wished Language]
+
+Open [Your Application]
+
+Close
 ```
