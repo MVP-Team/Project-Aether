@@ -1,4 +1,4 @@
-# <img src="Aether GUI/GUI-Frontend/GUI/GUI/Assets/aet.ico" alt="[logo]" width="48"/> Virtual Desktop Assistant for Windows
+# <img src="Aether GUI/GUI-Frontend-Avalonia/GUI/Assets/aet.ico" alt="[logo]" width="48"/> Virtual Desktop Assistant for Windows
 
 ## Features
 
@@ -49,7 +49,11 @@ git clone https://github.com/MVP-Team/Project-Aether.git
 ### Step 3
 
 To build Aether, open a command prompt inside the project directory. Then type the following command:
-`dotnet build -c Release -o build` the built files will be found in the newly created build directory.
+
+```
+dotnet build -c Release -o build
+``` 
+the built files will be found in the newly created build directory.
 
 ### Step 4
 
