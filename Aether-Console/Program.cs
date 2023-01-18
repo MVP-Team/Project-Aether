@@ -3,11 +3,13 @@ using System.Text;
 using Aether_Console.Terminal;
 
 
-
-
 Console.OutputEncoding = Console.InputEncoding = Encoding.Unicode;
 Basis.Lines();
 
+/*
+
+Voice_Recorder vs = new Voice_Recorder();
+vs.Processor();
 
 /*
 using NAudio.Wave;
