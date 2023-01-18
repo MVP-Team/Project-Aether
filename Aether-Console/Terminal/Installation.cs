@@ -70,15 +70,15 @@ namespace Aether_Console.Terminal
 
             //Directory.Move(@$"{s}\Python\ffmpeg-master-latest-win64-gpl", @$"{s}\Python\ffmpeg");
 
-            FileSystem.RenameDirectory(@$"{s}\Python\ffmpeg-master-latest-win64-gpl", "ffmpeg");
+            //FileSystem.RenameDirectory(@$"{s}\Python\ffmpeg-master-latest-win64-gpl", "ffmpeg");
 
             System.IO.File.Delete(zipPath);
 
             Value = Environment.GetEnvironmentVariable(name, scope);
             Value = Value ?? @$"{s}\Python";
-            if (!Value.Contains($"{s}\\Python\\ffmpeg\\bin"))
+            if (!Value.Contains($"{s}\\Python\\ffmpeg-master-latest-win64-gpl\\bin"))
             {
-                Value = Value + @$";{s}\ffmpeg\bin";
+                Value = Value + @$";{s}\ffmpeg-master-latest-win64-gpl\bin";
                 Environment.SetEnvironmentVariable(name, Value, scope);
             }
 

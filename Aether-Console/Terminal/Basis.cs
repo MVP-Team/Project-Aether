@@ -8,7 +8,6 @@ using System.Net;
 using System.Net.Http.Headers;
 using static System.Net.Mime.MediaTypeNames;
 using System.Collections.Immutable;
-using LibreTranslate.Net;
 using System.Collections;
 using Newtonsoft.Json;
 using System.Net.Mime;
@@ -22,7 +21,7 @@ namespace Aether_Console.Terminal
 {
     partial class Basis
     {
-        public static readonly List<string> COMMANDS = new() { "open", "search", "translate", "close", "open,", "search,", "translate,", "close" };
+        public static readonly List<string> COMMANDS = new() { "open", "search", "translate", "close", "open,", "search,", "translate,", "random"};
         private static List<string> translations = new List<string>();
         public static void Lines()
         {
@@ -111,7 +110,9 @@ namespace Aether_Console.Terminal
                     Console.WriteLine("Bye bye, see you later! ;)");
                     Environment.Exit(0);
                     break;
-                   
+                case "random":
+                    GetJoke();
+                    break;
                 default:
                     Console.WriteLine("Please enter a valid command.");
                     break;

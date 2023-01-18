@@ -1,6 +1,5 @@
 ﻿
 using Aether_Console.Classes_JSON;
-using LibreTranslate.Net;
 using Microsoft.Win32;
 using Nancy.Json;
 using System;
@@ -360,6 +359,15 @@ namespace Aether_Console.Terminal
             }
 
             return right;
+        }
+
+        private async static void GetJoke()
+        {
+            var client = new HttpClient();
+            var response = await client.GetAsync("https://v2.jokeapi.dev/joke/Miscellaneous,Spooky,Christmas?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&format=txt&type=single");
+            var joke = await response.Content.ReadAsStringAsync();
+            Console.WriteLine(joke);
+            Answer();
         }
     }
 }
