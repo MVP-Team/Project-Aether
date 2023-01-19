@@ -50,25 +50,22 @@ git clone https://github.com/MVP-Team/Project-Aether.git
 
 ### Step 3
 
-In order to run Aether, open a command prompt inside the new project directory. Afterwards type in the following commands:
+In order to use Aether, open a command prompt inside the new project directory and afterwards type in the following commands:
 
 ```
 cd Aether-Console\bin\Debug\net6.0
 
 dotnet Aether-Console.dll
 ``` 
-Then an installation will start in order to run the voice recognition and finally you can run the programm.
+Then an installation will start in order to run the voice recognition and finally you can start the console programm.
 
 ### Step 4
-In order to execute the UI you need to type in the command:
+In order to use the UI you need to type in the commands:
 
-run the
+
 ```bash
 npm i
-```
-command
-after that, run the app using 
-```bash
+
 npm start
 ```
 
