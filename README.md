@@ -22,7 +22,7 @@ Download from [releases](https://github.com/MVP-Team/Project-Aether/releases).
 
 How to search the web with Aether.
 
-```bash
+```
 Search the tallest building in the world
 ```
 
