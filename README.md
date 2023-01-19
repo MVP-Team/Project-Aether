@@ -4,8 +4,9 @@
 
 - TODO app
 - Search in the internet
-- Open apps (Only under Windows)
+- Open apps
 - Translate sentences
+- Make jokes
 
 ## Downloads
 
@@ -19,7 +20,7 @@ Download from [releases](https://github.com/MVP-Team/Project-Aether/releases).
 
 ## Use Case
 
-Sercht the web with Aether.
+How to search the web with Aether.
 
 ```bash
 Search the tallest building in the world
@@ -27,13 +28,13 @@ Search the tallest building in the world
 
 ## Prerequisites
 
-Before you begin building the application, you must have the following prerequisites installed on your system:
+Before you begin building the application, the following prerequisites must be installed on your system:
 
 - [Node.js](https://nodejs.org/dist/v18.13.0/node-v18.13.0-x64.msi)
 
 ## Building
 
-If you wish to build the Virtual Desktop Assistant yourself, follow these steps:
+If you wish to build the Virtual Desktop Assistant on Windows yourself, follow these steps:
 
 ### Step 1
 
@@ -49,10 +50,11 @@ git clone https://github.com/MVP-Team/Project-Aether.git
 
 ### Step 3
 
-To run Aether, open a command prompt inside the project directory. Then type the following commands:
+In order to run Aether, open a command prompt inside the project directory. Then type the following commands:
 
 ```
 cd Aether-Console\bin\Debug\net6.0
+
 dotnet Aether-Console.dll
 ``` 
 Afterwards you are free to use the application.
@@ -82,4 +84,6 @@ Translate [Your sentence] into [Wished Language]
 Open [Your Application]
 
 Close
+
+Random Joke
 ```
