@@ -32,17 +32,17 @@ Before you begin building the application, the following prerequisites must be i
 
 - [Node.js](https://nodejs.org/dist/v18.13.0/node-v18.13.0-x64.msi)
 
-## Building
+## How to run the Application
 
-If you wish to build the Virtual Desktop Assistant on Windows yourself, follow these steps:
+If you wish to run the Virtual Desktop Assistant on Windows yourself, follow the next steps:
 
 ### Step 1
 
-Install the X64 version of [.NET 6.0 (or higher) SDK](https://dotnet.microsoft.com/download/dotnet/6.0).
+Install the X64 version of [.NET 6.0 (or higher) SDK] under (https://dotnet.microsoft.com/download/dotnet/6.0).
 
 ### Step 2
 
-Clone the repository.
+Clone the repository in CMD or Powershell with this command:
 
 ```bash
 git clone https://github.com/MVP-Team/Project-Aether.git
@@ -50,18 +50,18 @@ git clone https://github.com/MVP-Team/Project-Aether.git
 
 ### Step 3
 
-In order to run Aether, open a command prompt inside the project directory. Then type the following commands:
+In order to run Aether, open a command prompt inside the new project directory. Afterwards type in the following commands:
 
 ```
 cd Aether-Console\bin\Debug\net6.0
 
 dotnet Aether-Console.dll
 ``` 
-Afterwards you are free to use the application.
+Then an installation will start in order to run the voice recognition and finally you can run the programm.
 
 ### Step 4
+In order to execute the UI you need to type in the command:
 
-To build Electron App you need to:
 run the
 ```bash
 npm i
