@@ -1,4 +1,4 @@
-# <img src="Aether GUI/GUI-Frontend-Avalonia/GUI/Assets/aet.ico" alt="[logo]" width="48"/> Virtual Desktop Assistant only for Windows
+A# <img src="Aether GUI/GUI-Frontend-Avalonia/GUI/Assets/aet.ico" alt="[logo]" width="48"/> Virtual Desktop Assistant only for Windows
 
 ## Features
 
@@ -28,7 +28,7 @@ Search the tallest building in the world
 
 ## Prerequisites
 
-Before you begin building the application, the following prerequisites must be installed on your system:
+Before you begin to start the application, the following prerequisites must be installed on your system:
 
 - [Node.js](https://nodejs.org/dist/v18.13.0/node-v18.13.0-x64.msi)
 
@@ -60,7 +60,7 @@ dotnet Aether-Console.dll
 Then an installation will start in order to run the voice recognition and finally you can start the console programm.
 
 ### Step 4
-In order to use the UI you need to type in the commands:
+In order to use the UI you need to type in these commands:
 
 
 ```bash
