@@ -28,17 +28,17 @@ Search the tallest building in the world
 
 ## Prerequisites
 
-Before you begin to start the application, the following prerequisites must be installed on your system:
+Before you begin to start the application, the following prerequisite must be installed on your system:
 
 - [Node.js](https://nodejs.org/dist/v18.13.0/node-v18.13.0-x64.msi)
 
-## How to run the Application
+## How to build the Application
 
 If you wish to run the Virtual Desktop Assistant on Windows yourself, follow the next steps:
 
 ### Step 1
 
-Install the X64 version of [.NET 6.0 (or higher) SDK] under (https://dotnet.microsoft.com/download/dotnet/6.0).
+Install the X64 version of [.NET 7.0 SDK] under (https://dotnet.microsoft.com/download/dotnet/7.0).
 
 ### Step 2
 
