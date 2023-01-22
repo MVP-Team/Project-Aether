@@ -16,7 +16,7 @@ Download from [releases](https://github.com/MVP-Team/Project-Aether/releases).
 
 - IDE: Visual Studio 2022
 - Language: C# 9.0
-- SDK: .NET 6
+- SDK: .NET 7
 
 ## Use Case
 
