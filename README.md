@@ -1,5 +1,4 @@
-<img src="Aether GUI/GUI-Frontend-Avalonia/GUI/Assets/aet.ico" alt="[logo]" width="48"/> 
-#Virtual Desktop Assistant only for Windows
+<img src="Aether GUI/GUI-Frontend-Avalonia/GUI/Assets/aet.ico" alt="[logo]" width="48"/> # Virtual Desktop Assistant only for Windows
 
 ## Features
 
