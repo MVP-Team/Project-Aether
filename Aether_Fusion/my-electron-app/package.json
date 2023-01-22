@@ -1,0 +1,14 @@
+{
+  "name": "aethergui",
+  "version": "1.0.0",
+  "description": "2",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "MVP",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^22.0.2"
+  }
+}

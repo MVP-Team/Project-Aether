@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JUk7M2Mg8H1AGT4mpfW7URcficESHAgkFVLlQw9Qm5CU4wE63tOA32xB2Wgu3yugr+sQnWxPQ9R9krc0gW15mA==",
+  "dgSpecHash": "3Wmiq9Ik0AOIIg/J0zqjTUIAx3FlnSmfY7efxokd+uasUpQPuIkltDFElz9nBhTNp0RrAkMY65z+tGXleqor2w==",
   "success": true,
-  "projectFilePath": "C:\\HTL\\3BHIF\\Aether\\Aether-Console\\Aether-Console.csproj",
+  "projectFilePath": "C:\\HTL\\3BHIF\\Aether_GUI\\Project-Aether\\Aether-Console\\Aether-Console.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Alex\\.nuget\\packages\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",
     "C:\\Users\\Alex\\.nuget\\packages\\microsoft.dotnet.platformabstractions\\2.0.4\\microsoft.dotnet.platformabstractions.2.0.4.nupkg.sha512",
