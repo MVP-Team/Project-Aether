@@ -26,11 +26,7 @@ namespace Aether_Console.Terminal
         public static void Lines()
         {
             string s = Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.IndexOf("Aether-Console"));
-            if (!System.IO.File.Exists(@$"{s}/Python/python399.exe")) {
-                Console.WriteLine("Wait until the installation is finished ;)!!!");
-                Installation.installation();
-                Console.WriteLine("Now you can start to use the programm!!!");
-            }
+            
             string? beginning = Console.ReadLine();
 
             bool ask = false;
