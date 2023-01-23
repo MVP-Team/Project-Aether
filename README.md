@@ -50,24 +50,25 @@ git clone https://github.com/MVP-Team/Project-Aether.git
 
 ### Step 3
 
-In order to use Aether, open a command prompt inside the new project directory and afterwards type in the following commands:
+You need to locate the Python folder and within it, you need to execute the batch "Aether_Setup.bat"
 
-```
-cd Aether-Console\bin\Debug\net6.0
-
-dotnet Aether-Console.dll
-``` 
 Then an installation will start in order to run the voice recognition and finally you can start the console programm.
 
 ### Step 4
-In order to use the UI you need to type in these commands:
 
+In order to use Aether, open a command prompt inside the new project directory and afterwards type in the following commands:
 
-```bash
-npm i
-
-npm start
 ```
+cd Aether-Console\bin\Debug\net7.0-windows
+
+dotnet Aether-Fusion.dll
+OR
+click the .exe
+``` 
+
+### Step 5
+In order to use the Application you need to run "Aether.bat":
+
 
 ## Commands that you can use in Aether:
 
