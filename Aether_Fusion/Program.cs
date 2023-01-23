@@ -1,4 +1,5 @@
 using Aether_Console.Terminal;
+using Aether_Fusion.Terminal;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Nancy;
@@ -31,5 +32,7 @@ app.MapGet("/translate={text}", (string text) => Basis.translator(text));
 app.MapGet("/open={app}", (string app) => Basis.Application(app));
 
 app.MapGet("/voice", () => vs.Processor());
+
+app.MapGet("/todo", () => TodoListOpen.open());
 
 app.Run();
