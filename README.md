@@ -73,6 +73,8 @@ click the .exe
 ### Step 5
 In order to use the Application you need to run "Aether.bat":
 
+### Step 6 (optional) You need to build the todo list using visual studio
+
 ## Commands that you can use in Aether:
 
 ```bash
@@ -87,6 +89,8 @@ Open [Your Application]
 Close
 
 Random Joke
+
+Todo
 ```
 
 ### Webpage for Aether:
