@@ -1,0 +1,36 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="300"
+             x:Class="Todo.Views.TodoListView">
+  <DockPanel Background="#2D2D2D">
+    <Button DockPanel.Dock="Bottom"
+            Command="{Binding $parent[Window].DataContext.AddItem}">
+      Add an item
+    </Button>
+    <ItemsControl Items="{Binding Items}">
+      <ItemsControl.ItemTemplate>
+        <DataTemplate>
+			<Panel Name="{Binding Id}">
+				
+				<Button 
+					Command="{Binding $parent[Window].DataContext.RemoveItem}"
+					CommandParameter="{Binding Id}"
+					BorderThickness="0"
+					Margin="5 0 5 0" 
+					FontWeight="ExtraBold"
+					Width="25" 
+					Foreground="LightGreen" 
+					Background="Transparent" 
+					HorizontalAlignment="Left">✓</Button>
+
+				<TextBlock Text="{Binding Description}" Foreground="White" FontSize="15" HorizontalAlignment="Right" Margin="0 0 5 0">
+
+				</TextBlock>
+			</Panel>
+        </DataTemplate>
+      </ItemsControl.ItemTemplate>
+    </ItemsControl>
+  </DockPanel>
+</UserControl>

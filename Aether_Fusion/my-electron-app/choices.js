@@ -34,6 +34,15 @@ async function choice(inputVal){
         .then((data) => {
           output = data;
         });
+    } else if(words[0].toLowerCase() == "todo") {
+      await fetch(`http://localhost:5000/todo`, {
+        mode: "cors",
+      })
+        .then((response) => response.text())
+        .then((data) => {
+          output = "Todo-List App will open now";
+        });
+
     }else if(words[0].toLowerCase() == "close"){
       close();
       output = "Bye! See you later!"
