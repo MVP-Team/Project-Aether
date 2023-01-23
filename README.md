@@ -36,9 +36,11 @@ Before you begin to start the application, the following prerequisite must be in
 
 If you wish to run the Virtual Desktop Assistant on Windows yourself, follow the next steps:
 
+
 ### Step 1
 
 Install the X64 version of [.NET 7.0 SDK] under (https://dotnet.microsoft.com/download/dotnet/7.0).
+
 
 ### Step 2
 
@@ -48,11 +50,13 @@ Clone the repository in CMD or Powershell with this command:
 git clone https://github.com/MVP-Team/Project-Aether.git
 ```
 
+
 ### Step 3
 
 You need to locate the Python folder and within it, you need to execute the batch "Aether_Setup.bat"
 
 Then an installation will start in order to run the voice recognition and finally you can start the console programm.
+
 
 ### Step 4
 
@@ -60,15 +64,14 @@ In order to use Aether, open a command prompt inside the new project directory a
 
 ```
 cd Aether-Console\bin\Debug\net7.0-windows
-
+``` 
 dotnet Aether-Fusion.dll
 OR
 click the .exe
-``` 
+
 
 ### Step 5
 In order to use the Application you need to run "Aether.bat":
-
 
 ## Commands that you can use in Aether:
 
