@@ -21,13 +21,12 @@ function toggleRecording() {
             var dataArray = new Uint8Array(bufferLength);
 
             recorder = new MediaRecorder(stream);
-            var audioBlob;
             recorder.ondataavailable = function(e) {
-                audioBlob = new Blob([e.data], { 'type' : 'audio/wav; codecs=opus' });
+                var url = URL.createObjectURL(e.data);
+                download(url, "system_audio.wav")
             };
             recorder.onstop = function() {
                 console.log("Recording stopped due to silence");
-                const url = URL.createObjectURL(audioBlob);
             };
 
             var silenceStart;
@@ -54,6 +53,7 @@ function toggleRecording() {
 }
 
 
+
 function getCurrentAmplitude(dataArray) {
     var sum = 0;
     for (var i = 0; i < dataArray.length; i++) {
@@ -61,4 +61,10 @@ function getCurrentAmplitude(dataArray) {
     }
     var average = sum / dataArray.length;
     return average;
+}
+function download(dataurl, filename) {
+  const link = document.createElement("a");
+  link.href = dataurl;
+  link.download = filename;
+  link.click();
 }
