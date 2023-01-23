@@ -36,13 +36,6 @@ function showContent(content) {
 }
 
 const searchForm = document.getElementById("search-form");
-searchForm.addEventListener("submit", function(event) {
-  event.preventDefault();
-  const searchInput = document.getElementById("search-input");
-  const searchValue = searchInput.value;
-  // Perform the search here
-  console.log("Searching for: " + searchValue);
-});
 
 const searchInput = document.getElementById("search-input");
 searchInput.addEventListener("keyup", function(event) {
@@ -53,9 +46,6 @@ searchInput.addEventListener("keyup", function(event) {
 });
 
 
-let isRecording = false;
-const microphone = document.getElementById("microphone");
-const dot = document.getElementById("dot1");
 
 var nodeConsole = require('console');
 var myConsole = new nodeConsole.Console(process.stdout, process.stderr);
