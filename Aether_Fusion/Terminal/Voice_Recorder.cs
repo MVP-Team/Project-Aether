@@ -1,7 +1,9 @@
-﻿using NAudio.Wave;
+﻿using Aether_Fusion.Terminal;
+using NAudio.Wave;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -97,6 +99,12 @@ namespace Aether_Console.Terminal
 
         public string Processor()
         {
+            string downloadsPath = KnownFolders.GetPath(KnownFolder.Downloads);
+            if (File.Exists(@$"{Environment.CurrentDirectory}\system_recorded_audio.wav"))
+            {
+                File.Delete(@$"{Environment.CurrentDirectory}\system_recorded_audio.wav");
+            }
+            File.Move(@$"downloadsPath\system_recorded_audio.wav", @$"{Environment.CurrentDirectory}\system_recorded_audio.wav");
             bool file_exister = false;
             string s = Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.IndexOf("Aether_Fusion"));
             if (File.Exists($"{s}\\Aether-Console\\bin\\Debug\\net6.0\\audio_text.txt"))
