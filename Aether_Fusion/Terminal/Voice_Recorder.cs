@@ -101,15 +101,15 @@ namespace Aether_Console.Terminal
         {
 			string s = Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.IndexOf("Aether_Fusion"));
 			string downloadsPath = KnownFolders.GetPath(KnownFolder.Downloads);
-			if (File.Exists($@"{s}Aether_Fusion\bin\Debug\net7.0-windows\system_recorded_audio.wav"))
+			if (File.Exists($@"{s}Aether_Fusion\system_recorded_audio.wav"))
 			{
-				File.Delete($@"{s}Aether_Fusion\bin\Debug\net7.0-windows\system_recorded_audio.wav");
+				File.Delete($@"{s}Aether_Fusion\system_recorded_audio.wav");
 			}
-			File.Move(@$"{downloadsPath}\system_recorded_audio.wav", $@"{s}Aether_Fusion\bin\Debug\net7.0-windows\system_recorded_audio.wav");
+			File.Move(@$"{downloadsPath}\system_recorded_audio.wav", $@"{s}Aether_Fusion\system_recorded_audio.wav");
 			bool file_exister = false;
-			if (File.Exists($@"{s}Aether_Fusion\bin\Debug\net7.0-windows\audio_text.txt"))
+			if (File.Exists($@"{s}Aether_Fusion\audio_text.txt"))
 			{
-				File.Delete($@"{s}Aether_Fusion\bin\Debug\net7.0-windows\audio_text.txt");
+				File.Delete($@"{s}Aether_Fusion\audio_text.txt");
 			}
 			// Console.WriteLine($"{s}Python\python.exe");
 			string arg = string.Format(@$"{s}\Python\app.py"); // Path to the Python code
@@ -122,13 +122,13 @@ namespace Aether_Console.Terminal
 			Process processChild = Process.Start(p.StartInfo);
 			while (file_exister == false)
 			{
-				if (File.Exists($@"{s}Aether_Fusion\bin\Debug\net7.0-windows\audio_text.txt"))
+				if (File.Exists($@"{s}Aether_Fusion\audio_text.txt"))
 				{
 					Thread.Sleep(3000);
 					file_exister = true;
 				}
 			}
-			string text = System.IO.File.ReadAllText(@$"{s}Aether_Fusion\bin\Debug\net7.0-windows\audio_text.txt");
+			string text = System.IO.File.ReadAllText(@$"{s}Aether_Fusion\audio_text.txt");
 			return text;
 		}
     }

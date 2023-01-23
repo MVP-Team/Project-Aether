@@ -1,5 +1,8 @@
 document.writeln("<script type='text/javascript' src='choices.js'></script>");
-document.writeln("<script src='node_modules/downloadjs/download.min.js'></script>");
+document.writeln("<script src='node_modules/electron-dl/index.js'></script>");
+document.writeln(
+  "<script src='node_modules/downloadjs/download.min.js'></script>"
+);
 var recorder, gumStream, audioCtx;
 var recordButton = document.getElementById("micC2");
 recordButton.addEventListener("click", toggleRecording);
@@ -31,17 +34,21 @@ function toggleRecording() {
         };
         recorder.onstop = function () {
           console.log("Recording stopped due to silence");
-          download(audioBlob, "system_recorded_audio.wav", "audio/wav");
-          fetch(
-            `http://localhost:5000/voice`,
-            {
-              mode: "cors",
-            }
-          )
-            .then((response) => response.text())
-            .then((data) => {
-              output = choice(data);
-            });
+          download(audioBlob, {
+            saveAs: false,
+            directory: "Downloads",
+            filename: "system_recorded_audio.wav"
+          }).then((dl) =>
+            console.log(`Downloaded to ${dl.getSavePath()}`).then(
+              fetch(`http://localhost:5000/voice`, {
+                mode: "cors",
+              })
+                .then((response) => response.text())
+                .then((data) => {
+                  output = choice(data);
+                })
+            )
+          );
         };
 
         var silenceStart;
